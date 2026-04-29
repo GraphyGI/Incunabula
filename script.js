@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === REVEAL ON SCROLL ===
   const reveals = document.querySelectorAll('.reveal');
-
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -30,29 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-
+  }, { threshold: 0.1 });
   reveals.forEach(el => revealObserver.observe(el));
-
-  // === ACTIVE NAV LINK ===
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)'); // Exclude the CTA button from standard active state
-
-  const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  }, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
-
-  sections.forEach(section => navObserver.observe(section));
 
   // === WHATSAPP REDIRECT LOGIC ===
   const waButton = document.getElementById('wa-send');
@@ -61,18 +39,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (waButton && waTextarea) {
     waButton.addEventListener('click', () => {
       const message = waTextarea.value.trim();
-      
-      // If the user didn't type anything, use a default fallback
-      const finalMessage = message ? message : "Hola Jordan. Me interesa hablar sobre la propuesta para Incunabula.";
-      
-      // Encode the message for the URL
+      const finalMessage = message ? message : "Hola Jordan. Revisamos la propuesta para Incunabula y nos gustaría agendar una reunión para el inicio.";
       const encodedMessage = encodeURIComponent(finalMessage);
-      
-      // WhatsApp API URL (Your number: +57 317 246 4305)
       const waUrl = `https://wa.me/573172464305?text=${encodedMessage}`;
-      
-      // Open in new tab
       window.open(waUrl, '_blank');
+    });
+  }
+
+  // === "MORE INFO" BUTTON SCROLL & PREFILL ===
+  const btnMoreInfo = document.getElementById('btn-more-info');
+  if (btnMoreInfo && waTextarea) {
+    btnMoreInfo.addEventListener('click', () => {
+      waTextarea.value = "Hola Jordan, me gustaría recibir más información sobre los servicios adicionales (Branding, SEO, etc.) que mencionas en la propuesta.";
+      document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+      waTextarea.focus();
     });
   }
 
