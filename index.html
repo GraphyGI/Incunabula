@@ -14,7 +14,7 @@
             <div class="hero-content">
                 <span class="badge pulse-alert"><i class="ph-fill ph-warning"></i> AUDITORÍA TÉCNICA CONFIDENCIAL</span>
                 <h1>Estabilización y Rescate Operativo para <span class="highlight">Incunabula.co</span></h1>
-                <p class="subtitle">Intervención de emergencia para proteger el flujo de caja ($4.7M/mes) y erradicar vulnerabilidades críticas en el ecosistema de ventas.</p>
+                <p class="subtitle">Intervención de emergencia para proteger el flujo de caja mensual y erradicar cuellos de botella críticos en el ecosistema de ventas.</p>
             </div>
 
             <div class="risk-board">
@@ -38,8 +38,8 @@
         <!-- Diagnóstico -->
         <section class="section">
             <div class="section-header">
-                <h2>El Diagnóstico Forense</h2>
-                <p>Identificamos fricciones de infraestructura silenciosas que están asfixiando la operación diaria.</p>
+                <h2>1. Diagnóstico Forense Detallado</h2>
+                <p>Identificamos fricciones de infraestructura silenciosas que están asfixiando la operación diaria. Haz clic en cada punto para ver la radiografía exacta del problema.</p>
             </div>
             
             <div class="grid cards-grid">
@@ -49,8 +49,8 @@
                         <span class="risk-badge high">Riesgo Alto</span>
                     </div>
                     <h3>Fallo de Integridad en Correos</h3>
-                    <p>Embudo en la capa de envío (MTA) que bloquea los recibos de compra y notificaciones al cliente.</p>
-                    <span class="btn-text">Análisis de impacto <i class="ph ph-arrow-right"></i></span>
+                    <p>Embudo en la capa de envío (MTA) que bloquea recibos de compra.</p>
+                    <span class="btn-text">Ver radiografía del problema <i class="ph ph-arrow-right"></i></span>
                 </div>
                 <div class="card danger-card" onclick="openModal('modal-inestabilidad')">
                     <div class="card-header">
@@ -58,17 +58,17 @@
                         <span class="risk-badge critical">Riesgo Crítico</span>
                     </div>
                     <h3>Desincronización del Núcleo</h3>
-                    <p>Conflicto de Runtime que asfixia la memoria del servidor y genera caídas silenciosas.</p>
-                    <span class="btn-text">Análisis de impacto <i class="ph ph-arrow-right"></i></span>
+                    <p>Conflicto de entorno de ejecución que asfixia la memoria del servidor.</p>
+                    <span class="btn-text">Ver radiografía del problema <i class="ph ph-arrow-right"></i></span>
                 </div>
                 <div class="card danger-card" onclick="openModal('modal-facturacion')">
                     <div class="card-header">
                         <i class="ph ph-chart-line-down icon"></i>
                         <span class="risk-badge high">Riesgo Alto</span>
                     </div>
-                    <h3>Ceguera de Datos y SEO</h3>
-                    <p>Penalización inminente por "spillover" de indexación y absoluta falta de telemetría de conversión.</p>
-                    <span class="btn-text">Análisis de impacto <i class="ph ph-arrow-right"></i></span>
+                    <h3>Ceguera de Datos y Penalización</h3>
+                    <p>Emisión de señales SEO tóxicas y absoluta falta de telemetría de conversión.</p>
+                    <span class="btn-text">Ver radiografía del problema <i class="ph ph-arrow-right"></i></span>
                 </div>
             </div>
         </section>
@@ -76,8 +76,8 @@
         <!-- Planes -->
         <section class="section">
             <div class="section-header">
-                <h2>Ruta de Intervención (Plan de Acción)</h2>
-                <p>Programa intensivo para detener la fuga de capital y devolver la estabilidad técnica a la marca.</p>
+                <h2>2. Ruta de Intervención (Hoja de Ruta)</h2>
+                <p>Programa de ingeniería intensiva diseñado para detener la fuga de capital, asegurar la captura de pagos y devolver la estabilidad técnica a la marca.</p>
             </div>
 
             <div class="tabs-container blueprint-container">
@@ -85,7 +85,7 @@
                     <div class="plan-header">
                         <div>
                             <h3>Estabilización Operativa Integral</h3>
-                            <p>Resolución quirúrgica de vulnerabilidades para proteger las transacciones y recuperar la credibilidad comercial.</p>
+                            <p>Resolución quirúrgica de vulnerabilidades de servidor y bases de datos.</p>
                         </div>
                         <div class="plan-price">
                             <span class="price">$3.500.000 <small>COP</small></span>
@@ -94,25 +94,65 @@
                     </div>
                     
                     <div class="accordion-group phase-group">
+                        <!-- FASE 1 -->
                         <div class="accordion">
                             <button class="accordion-trigger"><span class="phase-label">FASE 1</span> Restauración de Comunicación MTA <i class="ph ph-caret-down"></i></button>
-                            <div class="accordion-panel"><p>Corrección de los protocolos de transporte de mensajería (MTA) para asegurar que los compradores reciban sus recibos inmediatamente sin bloqueos del servidor por falsos positivos de spam.</p></div>
+                            <div class="accordion-panel">
+                                <p>Reestructuramos completamente la forma en que la tienda se comunica con el cliente tras un pago. Se abandona el motor genérico que causa bloqueos por spam.</p>
+                                <ul>
+                                    <li><strong>Aislamiento de la capa de envío:</strong> Configuración de un canal seguro e independiente (MTA) para correos transaccionales.</li>
+                                    <li><strong>Autenticación de Dominio:</strong> Alineación de protocolos de seguridad en el servidor para evitar que los recibos caigan en la carpeta de Spam del comprador.</li>
+                                    <li><strong>Auditoría de Logs de Correo:</strong> Pruebas de enrutamiento para asegurar un 100% de tasa de entrega en confirmaciones de pedidos.</li>
+                                </ul>
+                            </div>
                         </div>
+                        <!-- FASE 2 -->
                         <div class="accordion">
                             <button class="accordion-trigger"><span class="phase-label">FASE 2</span> Saneamiento y Sincronización Core <i class="ph ph-caret-down"></i></button>
-                            <div class="accordion-panel"><p>Alineación forzada del entorno de ejecución (Runtime) para evitar errores críticos de incompatibilidad (PHP). Limpieza profunda de registros de base de datos huérfanos que están asfixiando el ancho de banda interno.</p></div>
+                            <div class="accordion-panel">
+                                <p>Desactivamos la "bomba de tiempo" técnica alineando el código de la plataforma con la versión requerida por el servidor, liberando recursos críticos.</p>
+                                <ul>
+                                    <li><strong>Sincronización de Runtime (Entorno de ejecución):</strong> Ajuste de la versión del núcleo del servidor para hacerla compatible con los algoritmos de la tienda.</li>
+                                    <li><strong>Limpieza profunda de Base de Datos:</strong> Escaneo y eliminación de "transients" (tablas temporales huérfanas) y basura digital que hoy están asfixiando el ancho de banda interno.</li>
+                                    <li><strong>Optimización de Consultas al Buscador:</strong> Ajuste en la capa de procesamiento del índice para que la búsqueda de 15,000 SKUs no colapse el procesador del servidor.</li>
+                                </ul>
+                            </div>
                         </div>
+                        <!-- FASE 3 -->
                         <div class="accordion">
                             <button class="accordion-trigger"><span class="phase-label">FASE 3</span> Blindaje SEO y Telemetría <i class="ph ph-caret-down"></i></button>
-                            <div class="accordion-panel"><p>Detención del "spillover de indexación" en buscadores para proteger el tráfico orgánico. Instalación de infraestructura de telemetría (Analytics) para rastrear de forma exacta dónde se pierde cada venta.</p></div>
+                            <div class="accordion-panel">
+                                <p>Frenamos la fuga de tráfico orgánico e instalamos los "sensores" necesarios para que el negocio deje de operar a ciegas.</p>
+                                <ul>
+                                    <li><strong>Detención del "Spillover" de indexación:</strong> Implementación de reglas <code>noindex</code> dinámicas para evitar que cientos de páginas de sistema (carritos duplicados) penalicen la tienda en Google.</li>
+                                    <li><strong>Instalación de Puente de Datos (Data Layer):</strong> Configuración de infraestructura analítica base para rastrear con exactitud en qué paso del proceso de compra están huyendo los clientes.</li>
+                                    <li><strong>Validación de Rutas Huérfanas:</strong> Purga de URLs muertas que desperdician el presupuesto de rastreo de Google (Crawl Budget).</li>
+                                </ul>
+                            </div>
                         </div>
+                        <!-- FASE 4 -->
                         <div class="accordion">
-                            <button class="accordion-trigger"><span class="phase-label">FASE 4</span> Auditoría de Credibilidad <i class="ph ph-caret-down"></i></button>
-                            <div class="accordion-panel"><p>Eliminación de artefactos de desarrollo heredados (enlaces fantasma, testimonios falsos, datos de plantilla) que permanecen activos y destruyen la confianza del usuario durante el Checkout.</p></div>
+                            <button class="accordion-trigger"><span class="phase-label">FASE 4</span> Auditoría de Credibilidad y UX <i class="ph ph-caret-down"></i></button>
+                            <div class="accordion-panel">
+                                <p>Eliminación sistemática de todo rastro de plantillas baratas y configuraciones de desarrollo que destruyen la confianza del cliente justo en el embudo de ventas.</p>
+                                <ul>
+                                    <li><strong>Escaneo y purga de "Dummy Content":</strong> Eliminación de testimonios falsos, textos en latín (Lorem Ipsum) y correos de ejemplo que quedaron olvidados en producción.</li>
+                                    <li><strong>Corrección de Reglas de Negocio:</strong> Sincronización del umbral de envío gratuito (eliminando la discrepancia entre las barras de anuncios y el carrito real).</li>
+                                    <li><strong>Saneamiento de Enlaces Fantasma:</strong> Eliminación de botones que dirigen a sitios web de prueba de terceros, protegiendo al usuario de fugas del embudo de conversión.</li>
+                                </ul>
+                            </div>
                         </div>
+                        <!-- FASE 5 -->
                         <div class="accordion">
-                            <button class="accordion-trigger"><span class="phase-label">FASE 5</span> Control de Calidad (QA) de Pasarelas <i class="ph ph-caret-down"></i></button>
-                            <div class="accordion-panel"><p>Simulaciones de estrés algorítmico en Wompi y Addi dentro de un entorno aislado (Staging) para garantizar que, tras la limpieza, el servidor captura de forma segura el 100% de las transacciones.</p></div>
+                            <button class="accordion-trigger"><span class="phase-label">FASE 5</span> QA de Pasarelas y Empalme <i class="ph ph-caret-down"></i></button>
+                            <div class="accordion-panel">
+                                <p>El filtro final antes de volver a producción. Garantizamos que la máquina de recibir pagos esté perfectamente lubricada tras la intervención técnica.</p>
+                                <ul>
+                                    <li><strong>Simulaciones de estrés algorítmico:</strong> Transacciones controladas de principio a fin usando los entornos seguros (Sandbox) de Wompi y Addi.</li>
+                                    <li><strong>Verificación de Callbacks (Webhooks):</strong> Comprobación técnica de que la pasarela le avisa correctamente a la tienda que el pago fue exitoso, cambiando el estado del pedido en milisegundos.</li>
+                                    <li><strong>Empalme "Zero Downtime":</strong> Despliegue de los arreglos desde el servidor clonado hacia la tienda en vivo durante horas de bajo tráfico.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,13 +176,15 @@
         </section>
     </main>
 
-    <!-- Modals -->
+    <!-- Modals (Radiografías extendidas) -->
     <div class="modal-overlay" id="modal-comunicacion">
         <div class="modal danger-modal">
             <button class="modal-close" onclick="closeModals()"><i class="ph ph-x"></i></button>
             <h3>Fallo de Integridad en Correos</h3>
-            <div class="modal-alert"><i class="ph-fill ph-warning"></i> IMPACTO: Bloqueo Operativo</div>
-            <p>El servidor ha generado un <strong>embudo en el protocolo de transporte de mensajería (MTA)</strong>. Las confirmaciones de compra están siendo filtradas por el servidor como falsos positivos de spam y no llegan a los compradores. El cliente queda totalmente a ciegas tras realizar un pago, lo que dispara alarmas de fraude bancario y satura de quejas los canales de atención al cliente.</p>
+            <div class="modal-alert"><i class="ph-fill ph-warning"></i> IMPACTO: Bloqueo Operativo y Riesgo de Fraude</div>
+            <p><strong>Síntoma Clínico:</strong> El servidor ha generado un embudo en el protocolo de transporte de mensajería genérico. Los correos salen sin firmas de seguridad (SPF/DKIM) y el servidor de Hostinger o los proveedores como Gmail los interceptan como posibles amenazas o spam.</p>
+            <p><strong>Consecuencia Directa:</strong> El cliente queda totalmente a ciegas tras realizar un pago (no hay factura ni confirmación). Esto dispara alarmas de fraude bancario, incrementa los contracargos (Chargebacks) y satura de quejas los canales de atención al cliente.</p>
+            <p><strong>Vector de Resolución:</strong> Hay que aislar la capa de envíos transaccionales y encriptarla bajo un protocolo dedicado para garantizar el 100% de la entregabilidad directa a la bandeja de entrada.</p>
         </div>
     </div>
     <div class="modal-overlay" id="modal-inestabilidad">
@@ -150,7 +192,9 @@
             <button class="modal-close" onclick="closeModals()"><i class="ph ph-x"></i></button>
             <h3>Desincronización del Núcleo</h3>
             <div class="modal-alert critical-alert"><i class="ph-fill ph-warning-octagon"></i> IMPACTO: Bomba de Tiempo (Caída de sitio)</div>
-            <p>El núcleo principal de la tienda (CMS + Constructor) opera en un <strong>entorno de ejecución (Runtime Environment)</strong> severamente desfasado de los estándares de seguridad de PHP actuales. Esto desencadena incompatibilidades en cadena, creando una masiva acumulación de "basura digital" en las tablas de opciones. Como resultado, la tienda se asfixia en rendimiento, arrojando errores silenciosos y exponiendo toda la operación a un bloqueo total (Pantalla Blanca de la Muerte).</p>
+            <p><strong>Síntoma Clínico:</strong> El núcleo principal de la tienda y sus constructores operan en un entorno de ejecución (Runtime Environment) severamente desfasado de los estándares exigidos por el servidor actual (Conflicto de versiones estructural).</p>
+            <p><strong>Consecuencia Directa:</strong> Esto desencadena incompatibilidades en cadena, creando una masiva acumulación de "basura digital" en las bases de datos cada vez que un cliente hace una acción. La tienda se asfixia en rendimiento, el panel de métricas ya se rompió, y toda la operación está expuesta a un "Fatal Error" que deje el sitio en blanco.</p>
+            <p><strong>Vector de Resolución:</strong> Una alineación milimétrica del código del núcleo bajando temporalmente los umbrales de exigencia del servidor, seguido de una purga masiva de datos temporales huérfanos.</p>
         </div>
     </div>
     <div class="modal-overlay" id="modal-facturacion">
@@ -158,8 +202,9 @@
             <button class="modal-close" onclick="closeModals()"><i class="ph ph-x"></i></button>
             <h3>Penalización Orgánica y Ceguera de Datos</h3>
             <div class="modal-alert"><i class="ph-fill ph-warning"></i> IMPACTO: Fuga Constante de Capital</div>
-            <p>A nivel de arquitectura, el sitio sufre de <strong>Spillover de indexación</strong>, emitiendo cientos de señales tóxicas a Google (páginas de sistema indexadas y carritos duplicados), lo cual frena el posicionamiento SEO.</p>
-            <p>Sumado a esto, el negocio opera con <strong>ceguera telemétrica</strong>: no hay sensores modernos para medir conversiones. Incunabula está perdiendo docenas de clientes diarios sin tener los datos para entender si rebotan por velocidad, por diseño o por errores ocultos en la pasarela.</p>
+            <p><strong>Síntoma Clínico:</strong> A nivel de arquitectura, el sitio sufre de <em>Spillover de indexación</em>, emitiendo cientos de señales tóxicas a Google (se le está pidiendo a Google que lea más de 600 páginas de paginación vacías y páginas clonadas de prueba).</p>
+            <p><strong>Consecuencia Directa:</strong> El presupuesto de rastreo de Google se agota en basura, frenando el posicionamiento SEO de los 15,000 libros importantes. Sumado a esto, el negocio opera con <strong>ceguera telemétrica absoluta</strong>: no hay sensores modernos para medir conversiones, imposibilitando saber si el cliente abandona el carrito por fallas de diseño, de precio o técnicas.</p>
+            <p><strong>Vector de Resolución:</strong> Inyección de reglas de exclusión para motores de búsqueda (No-index dinámico) y construcción de un puente de recolección de datos (Data Layer) anclado a plataformas analíticas modernas.</p>
         </div>
     </div>
 
