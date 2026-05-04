@@ -1,75 +1,52 @@
-# ESTRATEGIA DE OPTIMIZACIÓN E-COMMERCE
+# ESTRATEGIA DE ESTABILIZACIÓN E-COMMERCE
 **Cliente:** Incunabula.co  
 **Consultor:** Jordan Marles | Web Manager  
-**Fecha:** 29 de abril de 2026  
+**Fecha:** 4 de mayo de 2026  
 **Estatus:** CONFIDENCIAL
 
 ---
 
-## 1. CONTEXTO Y ENFOQUE ESTRATÉGICO
-Incunabula posee un activo digital invaluable: un catálogo consolidado y una trayectoria real en el mercado. Sin embargo, la plataforma actual presenta "fricciones técnicas" que actúan como un freno invisible en la conversión de ventas.
+## 1. CONTEXTO Y DIAGNÓSTICO DEL DOLOR
+Incunabula posee un activo digital invaluable: un catálogo consolidado de ~15.000 SKUs. Sin embargo, tras un **análisis técnico forense**, se determinó que la plataforma actual sufre de una severa inestabilidad técnica que está asfixiando directamente la facturación diaria.
 
-Mi enfoque no es una reconstrucción total, sino una **intervención quirúrgica** para liberar el potencial del stack actual (WordPress + WooCommerce), optimizando lo que ya funciona y eliminando lo que estorba.
-
----
-
-## 2. DIAGNÓSTICO CRÍTICO (URGENTE)
-Tras la auditoría técnica preliminar, se identifican los siguientes puntos de dolor que requieren atención inmediata:
-
-*   **Rendimiento (Velocidad):** Sobrecarga de recursos front-end que bloquean la carga inicial, afectando especialmente a los usuarios móviles (donde ocurre la mayor parte del tráfico).
-*   **Embudo de Venta:** Presencia de scripts redundantes y elementos de navegación que generan confusión en el checkout, aumentando la tasa de abandono de carritos.
-*   **Salud del Sitio:** Módulos y plugins críticos sin mantenimiento por más de 30 meses, lo que representa un riesgo de seguridad y compatibilidad.
-*   **Infraestructura:** Capacidades de caché y CDN en el servidor actual que están desactivadas o mal configuradas.
+Mi enfoque es un **rescate quirúrgico** para desatascar la plataforma, reactivar la recolección de datos y eliminar las fricciones que hoy impiden que los usuarios finalicen sus compras con confianza.
 
 ---
 
-## 3. PROPUESTAS DE INVERSIÓN
+## 2. PUNTOS CRÍTICOS IDENTIFICADOS (URGENTE)
 
-### OPCIÓN A: PAQUETE ESENCIAL (STABILIZE)
-**Inversión:** $2.500.000 COP  
-**Tiempo estimado:** 3 Semanas  
-**Acompañamiento:** 3 Sesiones de co-creación y entrega.
-
-*   Diagnóstico técnico profundo de errores críticos.
-*   Activación y configuración de infraestructura de rendimiento (Caché/CDN).
-*   Saneamiento técnico (eliminación de "bloat" y código basura).
-*   Optimización de assets (imágenes y scripts críticos).
-
-### OPCIÓN B: PAQUETE INTEGRAL (PERFORMANCE & UX) — RECOMENDADO
-**Inversión:** $5.800.000 COP  
-**Tiempo estimado:** 6 Semanas  
-**Acompañamiento:** 6 Sesiones de consultoría estratégica.
-
-*   **Incluye todo lo del Paquete Esencial.**
-*   Auditoría de Experiencia de Usuario (UX) enfocada en conversión.
-*   Optimización completa del flujo de compra (Home a Checkout).
-*   Hoja de ruta estratégica de crecimiento a 6 meses.
-*   Mejoras en el sistema de descubrimiento de catálogo.
+*   **Fallo de Integridad en Comunicación:** El servidor tiene un embudo crítico en el protocolo de transporte de mensajería (MTA). Las confirmaciones de compra no salen; el cliente queda a ciegas y el soporte colapsa.
+*   **Desincronización del Núcleo:** El motor principal del sitio opera en un entorno de ejecución (Runtime) desfasado. Esto crea fricción constante, causando bloqueos internos y errores fatales silenciosos.
+*   **Penalización Orgánica y Ceguera de Datos:** El sitio sufre de un descontrol de indexación ante los motores de búsqueda y opera sin telemetría de conversión. Se pierden ventas en la sombra sin saber por qué.
+*   **Fricción de Confianza (UX):** Presencia de artefactos de desarrollo heredados (textos falsos, enlaces a servidores de demostración) en producción que destruyen la credibilidad al momento de pagar.
 
 ---
 
-## 4. COMPLEMENTO: ADMINISTRACIÓN MENSUAL
-**Inversión:** $1.100.000 COP / mes  
-Asegura la salud continua de la plataforma post-intervención. Incluye actualizaciones de seguridad, monitoreo de rendimiento, soporte técnico directo y aplicación progresiva de mejoras del roadmap.
+## 3. PROPUESTA DE INVERSIÓN ÚNICA
+
+### PROGRAMA DE ESTABILIZACIÓN OPERATIVA Y RESCATE
+**Inversión:** $3.500.000 COP  
+**Tiempo estimado:** 3 a 4 Semanas  
+**Acompañamiento:** 1 Sesión de entrega técnica.
+
+Un paquete intensivo diseñado para blindar la tienda, solucionar los errores de raíz y recuperar el control tecnológico.
+
+*   **Restauración de Protocolos de Comunicación:** Corrección de la capa de envío para asegurar la llegada de los recibos de compra.
+*   **Saneamiento de Core y Base de Datos:** Sincronización del entorno del servidor y purga de registros huérfanos que asfixian la memoria.
+*   **Auditoría y Purga de Credibilidad:** Eliminación de enlaces fantasma y textos de plantilla, unificando la experiencia comercial real de la marca.
+*   **Blindaje SEO y Telemetría Base:** Desinfección de las rutas en buscadores e instalación de infraestructura de rastreo de datos.
+*   **Optimización del Buscador Interno:** Ajustes en la capa de procesamiento para asimilar de forma fluida el catálogo completo de libros.
+*   **Control de Calidad (QA) de Pasarelas:** Simulaciones y pruebas de las integraciones de pago (Wompi, Addi) en un entorno seguro.
 
 ---
 
-## 5. PROCESO DE TRABAJO
-1.  **Kickoff:** Alineación de metas y KPIs.
-2.  **Staging:** Trabajo en entorno de pruebas (sin riesgo para el sitio vivo).
-3.  **Implementación:** Aplicación de soluciones validadas.
-4.  **Entrega:** Reporte de impacto (comparativo antes/después).
-
----
-
-## 6. ACUERDOS Y CONDICIONES
-*   **Precios:** Sujetos a negociación según el ajuste final del alcance.
-*   **Pagos:** 50% anticipado y 50% contra entrega de resultados.
-*   **Garantía:** Todas las intervenciones son documentadas y probadas en entornos de seguridad antes de su publicación.
+## 4. POLÍTICAS Y ACUERDOS COMERCIALES
+*   **Metodología "Zero Risk":** Las intervenciones se realizan en un entorno clonado de pruebas (Staging). El sitio en vivo continuará vendiendo sin interrupciones durante todo el proceso.
+*   **Licencias y Software de Terceros:** El presupuesto ampara los servicios de consultoría e implementación técnica. **NO incluye** el pago o renovación de licencias de plugins o herramientas de terceros. El cliente deberá costear dichas licencias si la plataforma las requiere para su correcto funcionamiento.
+*   **Condiciones de Pago:** 50% anticipado y 50% contra entrega de resultados operativos validados.
 
 ---
 
 **Jordan Marles**  
 Web Manager  
 📧 graphyg.official@gmail.com  
-📱 317 246 4305

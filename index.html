@@ -1,300 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Estrategia de Optimización E-commerce — Incunabula</title>
-  <meta name="description" content="Propuesta estratégica personalizada para potenciar el rendimiento y la conversión de Incunabula.co">
-  <meta property="og:title" content="Jordan Marles | Estrategia de Optimización">
-  <meta property="og:description" content="Propuesta de intervención técnica para Incunabula.co">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000">
-  <meta property="og:type" content="website">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Estratégica | Incunabula</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Auditoría Confidencial</span>
+                <h1>Estabilización y Rescate para <span class="highlight">Incunabula.co</span></h1>
+                <p class="subtitle">Protegiendo su facturación y erradicando los cuellos de botella tecnológicos del ecosistema de ventas.</p>
+            </div>
+        </div>
+    </header>
 
-<div class="hero-bg-anim"></div>
-<div class="progress-bar" id="progressBar"></div>
+    <main class="container">
+        <!-- Diagnóstico -->
+        <section class="section">
+            <div class="section-header">
+                <h2>El Diagnóstico Forense</h2>
+                <p>Identificamos fricciones de infraestructura silenciosas que están asfixiando la operación diaria.</p>
+            </div>
+            
+            <div class="grid cards-grid">
+                <div class="card" onclick="openModal('modal-comunicacion')">
+                    <i class="ph ph-envelope-simple-open icon"></i>
+                    <h3>Fallo de Integridad en Correos</h3>
+                    <p>Embudo en la capa de envío que bloquea los recibos de compra.</p>
+                    <span class="btn-text">Ver impacto <i class="ph ph-arrow-right"></i></span>
+                </div>
+                <div class="card" onclick="openModal('modal-inestabilidad')">
+                    <i class="ph ph-warning-circle icon"></i>
+                    <h3>Desincronización del Núcleo</h3>
+                    <p>Conflicto en el entorno de ejecución que genera caídas internas.</p>
+                    <span class="btn-text">Ver impacto <i class="ph ph-arrow-right"></i></span>
+                </div>
+                <div class="card" onclick="openModal('modal-facturacion')">
+                    <i class="ph ph-trend-down icon"></i>
+                    <h3>Ceguera de Datos y Penalización</h3>
+                    <p>Pérdida de visitas por señales tóxicas en motores de búsqueda.</p>
+                    <span class="btn-text">Ver impacto <i class="ph ph-arrow-right"></i></span>
+                </div>
+            </div>
+        </section>
 
-<nav id="nav">
-  <div class="nav-brand">
-    <span class="brand-main">Jordan Marles</span>
-    <span class="nav-separator">|</span>
-    <span class="nav-doc-type">Estrategia de Optimización</span>
-    <span class="badge-confidencial">Confidencial</span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#diagnostico">Estado Actual</a></li>
-    <li><a href="#paquetes">Soluciones</a></li>
-    <li><a href="#proceso">El Proceso</a></li>
-    <li><a href="#contacto" class="nav-cta">Hablemos</a></li>
-  </ul>
-</nav>
+        <!-- Planes -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Ruta de Intervención</h2>
+                <p>Un programa intensivo diseñado para devolver el control operativo a la marca.</p>
+            </div>
 
-<header class="hero" id="hero">
-  <div class="hero-content">
-    <div class="hero-badge">📊 Análisis y Solución Técnica</div>
-    <h1>Desbloquea el verdadero potencial de tus ventas</h1>
-    <p>Hola Laura. Sé que el catálogo de <span class="brand-highlight">Incunabula</span> es su mayor activo y refleja años de trayectoria. Mi propósito es eliminar las barreras técnicas que hoy frenan a tus clientes, para que tu tienda no solo reciba visitas, sino que enamore y convierta de manera fluida.</p>
-    
-    <div class="hero-ctas">
-      <a href="#diagnostico" class="btn-premium btn-primary-premium">
-        <span>Ver diagnóstico crítico</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#paquetes" class="btn-premium btn-outline-premium">
-        <span>Explorar soluciones</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-      </a>
+            <div class="tabs-container">
+                <div class="tab-content active" style="display:block;">
+                    <div class="plan-header">
+                        <div>
+                            <h3>Estabilización Operativa y Rescate Comercial</h3>
+                            <p>Resolución quirúrgica de vulnerabilidades para proteger las transacciones y la credibilidad del comercio.</p>
+                        </div>
+                        <div class="plan-price">
+                            <span class="price">$3.500.000 <small>COP</small></span>
+                            <span class="time">Tiempo de ejecución: 3 a 4 Semanas</span>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-group">
+                        <div class="accordion">
+                            <button class="accordion-trigger">Restauración de Comunicación <i class="ph ph-caret-down"></i></button>
+                            <div class="accordion-panel"><p>Corrección de los protocolos de transporte de mensajería (MTA) para asegurar que los compradores reciban sus notificaciones sin bloqueos del servidor.</p></div>
+                        </div>
+                        <div class="accordion">
+                            <button class="accordion-trigger">Saneamiento y Sincronización <i class="ph ph-caret-down"></i></button>
+                            <div class="accordion-panel"><p>Alineación del entorno de ejecución (Runtime) para evitar errores críticos y limpieza de registros de base de datos que están asfixiando el ancho de banda interno.</p></div>
+                        </div>
+                        <div class="accordion">
+                            <button class="accordion-trigger">Auditoría de Credibilidad <i class="ph ph-caret-down"></i></button>
+                            <div class="accordion-panel"><p>Eliminación de artefactos de desarrollo heredados (enlaces fantasma, textos falsos de plantillas) que generan desconfianza inmediata en el checkout.</p></div>
+                        </div>
+                        <div class="accordion">
+                            <button class="accordion-trigger">Blindaje SEO y Telemetría <i class="ph ph-caret-down"></i></button>
+                            <div class="accordion-panel"><p>Detención del "spillover de indexación" en buscadores para proteger el tráfico orgánico e instalación de infraestructura de telemetría para medir el comportamiento de ventas.</p></div>
+                        </div>
+                        <div class="accordion">
+                            <button class="accordion-trigger">Control de Calidad (QA) de Pasarelas <i class="ph ph-caret-down"></i></button>
+                            <div class="accordion-panel"><p>Simulaciones de estrés algorítmico en las pasarelas de pago dentro de un entorno aislado (Staging) para garantizar capturas seguras de dinero real.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Acuerdos -->
+        <section class="section agreements">
+             <div class="accordion-group">
+                <div class="accordion">
+                    <button class="accordion-trigger">Políticas Comerciales y Garantías <i class="ph ph-caret-down"></i></button>
+                    <div class="accordion-panel">
+                        <ul>
+                            <li><strong>Metodología "Zero Risk":</strong> El sitio en vivo continuará operando y recibiendo ingresos con normalidad. Todo el desarrollo y las pruebas se realizarán en un clon privado.</li>
+                            <li><strong>Gestión de Licencias:</strong> El presupuesto de este programa es exclusivamente por concepto de honorarios de consultoría e ingeniería. No ampara la renovación ni el pago de licencias de software de terceros requeridas por la plataforma.</li>
+                            <li><strong>Estructura de Inversión:</strong> 50% de anticipo para asignación de agenda y 50% al finalizar la entrega técnica con los resultados validados.</li>
+                        </ul>
+                    </div>
+                </div>
+             </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modal-comunicacion">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModals()"><i class="ph ph-x"></i></button>
+            <h3>Fallo de Integridad en Correos</h3>
+            <p>El servidor ha generado un <strong>embudo en el protocolo de transporte de mensajería (MTA)</strong>. Las confirmaciones de compra están siendo filtradas en el backend y no llegan a los compradores. El cliente queda totalmente a ciegas tras realizar el pago, lo que dispara alarmas de fraude y satura los canales de servicio al cliente.</p>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modal-inestabilidad">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModals()"><i class="ph ph-x"></i></button>
+            <h3>Desincronización del Núcleo</h3>
+            <p>El núcleo de la plataforma está operando en un <strong>entorno de ejecución (Runtime Environment)</strong> severamente desfasado respecto a los estándares de seguridad del servidor. Esto desencadena incompatibilidades en cadena, creando una acumulación de "basura digital" que asfixia el rendimiento de la tienda y expone la operación a bloqueos críticos.</p>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modal-facturacion">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModals()"><i class="ph ph-x"></i></button>
+            <h3>Penalización y Ceguera de Datos</h3>
+            <p>La arquitectura del sitio está emitiendo señales negativas a los buscadores <em>(Spillover de indexación)</em> y muestra "artefactos fantasmas" que destruyen la credibilidad al comprar. Lo más grave es que el negocio opera <strong>sin telemetría de conversión</strong>: se están perdiendo ventas cada hora sin tener los sensores para rastrear en qué momento el cliente abandona.</p>
+        </div>
     </div>
 
-    <div class="hero-meta">
-      <span>Para: Laura Andica</span>
-      <span class="dot-separator">•</span>
-      <span><span class="brand-highlight" style="background:transparent; padding:0;">Incunabula</span> Librería</span>
-    </div>
-  </div>
-</header>
-
-<section class="section" id="diagnostico">
-  <div class="reveal section-header">
-    <div class="section-label">Comprendiendo el Desafío</div>
-    <h2 class="section-title">Tu plataforma no necesita ser reconstruida, necesita ser liberada.</h2>
-    <p class="section-subtitle">El e-commerce de <span class="brand-highlight">Incunabula</span> está construido sobre bases muy sólidas. Sin embargo, con el tiempo ha acumulado fricciones invisibles. Entiendo perfectamente lo frustrante que es perder una venta cuando el cliente ya estaba listo para comprar. <strong>Mi enfoque es proteger tu inversión actual y optimizarla al máximo.</strong></p>
-  </div>
-
-  <div class="urgent-errors-box reveal floating-card">
-    <div class="urgent-header">
-      <span class="urgent-icon">⚠️</span>
-      <h3>Resultados de la Auditoría Técnica Profunda:</h3>
-    </div>
-    
-    <div class="metrics-grid">
-      <div class="metric-box">
-        <div class="metric-value">>5.8s</div>
-        <div class="metric-label">Tiempo de Carga (Móvil)</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-value">42%</div>
-        <div class="metric-label">Fricción en Checkout</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-value">12+</div>
-        <div class="metric-label">Módulos Desactualizados</div>
-      </div>
-    </div>
-
-    <ul>
-      <li><strong>Pérdida de clientes por lentitud:</strong> El tiempo de carga actual en móviles (donde ocurre el 80% del tráfico de <span class="brand-highlight">Incunabula</span>) supera el estándar crítico de 3 segundos, lo que genera abandonos inmediatos.</li>
-      <li><strong>Fugas en el embudo de compra:</strong> Procesos redundantes y código innecesario ("bloat") están causando errores silenciosos justo cuando el cliente intenta pagar.</li>
-      <li><strong>Infraestructura subutilizada (0% Caché):</strong> A pesar de tener un servidor capaz, los sistemas de aceleración (Caché y CDN) están inactivos, obligando al servidor a procesar cada visita desde cero.</li>
-      <li><strong>Riesgo de seguridad inminente:</strong> Componentes vitales para el funcionamiento del catálogo llevan más de 30 meses sin recibir parches de seguridad, exponiendo la base de datos de clientes.</li>
-    </ul>
-  </div>
-
-  <div class="diag-grid reveal">
-    <div class="card diag-card interactive-card">
-      <div class="diag-icon">⚡</div>
-      <div class="diag-label">Velocidad es igual a Confianza</div>
-      <div class="diag-desc">En internet, un sitio rápido transmite seguridad. Al agilizar <span class="brand-highlight">Incunabula</span>, veremos un impacto directo en la decisión de compra de tus clientes.</div>
-    </div>
-    <div class="card diag-card interactive-card">
-      <div class="diag-icon">🛡️</div>
-      <div class="diag-label">Cuidamos tu Historia</div>
-      <div class="diag-desc">No haremos "borrón y cuenta nueva". Protegeremos el posicionamiento (SEO) que <span class="brand-highlight">Incunabula</span> ha ganado con tanto esfuerzo durante años.</div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="paquetes">
-  <div class="reveal section-header">
-    <div class="section-label">Tu Inversión Estratégica</div>
-    <h2 class="section-title">Soluciones a la medida de tu momento</h2>
-    <p class="section-subtitle">Sé que cada decisión de negocio cuenta. Por eso he diseñado dos rutas claras para ayudar a <span class="brand-highlight">Incunabula</span>. <br><em>Estoy abierto a escuchar sus prioridades y flexibilizar estos alcances para encontrar el balance perfecto para ustedes.</em></p>
-  </div>
-
-  <div class="pkg-grid">
-    <div class="pkg reveal interactive-card">
-      <div class="pkg-name">Paquete Esencial</div>
-      <div class="pkg-tagline">Resuelve lo urgente, protege las ventas de hoy.</div>
-      <div class="pkg-price">$2.500.000</div>
-      <div class="pkg-price-note">COP · Inversión única</div>
-
-      <hr class="pkg-divider">
-      <div class="pkg-section-title">El propósito de este plan</div>
-      <p class="pkg-desc-text">Pensado para actuar rápido. Si el objetivo es detener la pérdida de clientes por lentitud y estabilizar el sitio de manera inmediata, este es el camino ideal.</p>
-
-      <ul class="pkg-list mt-4">
-        <li>Intervención técnica directa sobre los bloqueos críticos.</li>
-        <li>Activación del "modo turbo" en su infraestructura actual (Caché/CDN).</li>
-        <li>Limpieza profunda de recursos que ralentizan la carga.</li>
-        <li>Informe transparente con los resultados logrados.</li>
-      </ul>
-
-      <div class="pkg-meta">
-        <div class="pkg-meta-item"><strong>3 Semanas</strong>Tiempo estimado</div>
-        <div class="pkg-meta-item"><strong>3 Sesiones</strong>De diagnóstico, avance y entrega final</div>
-      </div>
-    </div>
-
-    <div class="pkg recommended reveal reveal-delay-1 interactive-card">
-      <div class="pkg-badge pulse-anim">✦ LA MEJOR DECISIÓN</div>
-      <div class="pkg-name">Paquete Integral</div>
-      <div class="pkg-tagline">Experiencia total para enamorar a tu cliente.</div>
-      <div class="pkg-price">$5.800.000</div>
-      <div class="pkg-price-note">COP · Inversión única</div>
-
-      <hr class="pkg-divider">
-      <div class="pkg-section-title">El propósito de este plan</div>
-      <p class="pkg-desc-text">Para ir más allá de la velocidad. Aquí analizamos cómo navega tu cliente, cómo siente la marca y rediseñamos la experiencia para que comprar en <span class="brand-highlight">Incunabula</span> sea un placer.</p>
-
-      <ul class="pkg-list mt-4">
-        <li><strong>Incluye toda la intervención del Paquete Esencial.</strong></li>
-        <li>Auditoría profunda de Experiencia de Usuario (UX).</li>
-        <li>Rediseño estratégico del paso a paso hacia la compra.</li>
-        <li>Una hoja de ruta clara para crecer durante los próximos 6 meses.</li>
-        <li>Facilitamos la forma en que los usuarios descubren libros.</li>
-      </ul>
-
-      <div class="pkg-meta">
-        <div class="pkg-meta-item"><strong>6 Semanas</strong>Tiempo estimado</div>
-        <div class="pkg-meta-item"><strong>6 Sesiones</strong>Trabajo colaborativo y revisiones a fondo</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="addon reveal floating-card">
-    <div class="addon-icon">🤝</div>
-    <div>
-      <div class="addon-title">Crecimiento y Acompañamiento Mensual</div>
-      <div class="addon-price">$1.100.000 COP/mes</div>
-      <div class="addon-desc">
-        La tranquilidad de tener a un experto cuidando la plataforma de <span class="brand-highlight">Incunabula</span> mes a mes. Me encargo de las actualizaciones críticas, evito que el sitio vuelva a estar lento y sigo implementando mejoras sin que ustedes tengan que preocuparse por la tecnología.
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="proceso">
-  <div class="reveal section-header">
-    <div class="section-label">Cómo Trabajaremos</div>
-    <h2 class="section-title">Un proceso diseñado para darte tranquilidad</h2>
-    <p class="section-subtitle">Mi compromiso es cuidar el negocio mientras lo mejoramos. <span class="brand-highlight">Incunabula</span> seguirá vendiendo sin interrupciones durante toda nuestra colaboración.</p>
-  </div>
-  
-  <div class="process-timeline reveal">
-    <div class="process-step interactive-card">
-      <div class="process-num">01</div>
-      <div class="process-content">
-        <h4>Alineación y Entendimiento</h4>
-        <p>Conversaremos a fondo sobre las expectativas de tu equipo. Quiero entender perfectamente a sus clientes antes de mover una sola línea de código.</p>
-      </div>
-    </div>
-    <div class="process-step interactive-card">
-      <div class="process-num">02</div>
-      <div class="process-content">
-        <h4>Auditoría en Laboratorio Seguro</h4>
-        <p>Crearé una copia privada (staging) de <span class="brand-highlight">Incunabula</span>. Allí identificaré problemas y probaré soluciones con riesgo cero para el sitio en vivo.</p>
-      </div>
-    </div>
-    <div class="process-step interactive-card">
-      <div class="process-num">03</div>
-      <div class="process-content">
-        <h4>Implementación Quirúrgica</h4>
-        <p>Una vez estemos seguros de que las mejoras funcionan perfectamente en el laboratorio, las trasladaremos al sitio principal en horarios de bajo tráfico.</p>
-      </div>
-    </div>
-    <div class="process-step interactive-card">
-      <div class="process-num">04</div>
-      <div class="process-content">
-        <h4>Entrega y Claridad</h4>
-        <p>No te entregaré solo código. Tendremos una sesión final donde te mostraré de forma clara y con datos cómo mejoró la plataforma.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="adicionales">
-  <div class="reveal text-center">
-    <div class="section-header" style="margin-bottom: 24px;">
-      <h2 class="section-title" style="font-size: 24px;">El futuro de Incunabula</h2>
-      <p class="section-subtitle">Cuando la base técnica esté perfecta, podemos explorar juntos estas áreas para escalar el negocio:</p>
-    </div>
-    
-    <div class="services-compact">
-      <span class="service-pill hover-lift">🎨 Identidad Visual y Branding</span>
-      <span class="service-pill hover-lift">📐 Sistemas de Diseño UI</span>
-      <span class="service-pill hover-lift">🚀 Páginas de Aterrizaje Estratégicas</span>
-      <span class="service-pill hover-lift">📊 Posicionamiento SEO Inteligente</span>
-    </div>
-    
-    <button class="btn-text-link mt-4" id="btn-more-info">
-      Me gustaría conversar sobre estos complementos &rarr;
-    </button>
-  </div>
-</section>
-
-<section class="section" id="terminos">
-  <div class="terms-container reveal floating-card">
-    <h3 class="terms-heading">Mis compromisos contigo</h3>
-    <div class="terms-text">
-      <p><strong>Cercanía:</strong> Al trabajar conmigo, te saltas la burocracia de una agencia. Tendrás a un aliado directo, honesto y comprometido con los resultados de <span class="brand-highlight">Incunabula</span>.</p>
-      <p><strong>Flexibilidad y Transparencia:</strong> Las condiciones (50% al inicio, 50% al finalizar) están pensadas para proteger ambas partes. Mi prioridad es generar confianza a través de entregas claras y demostrables.</p>
-      <p><strong>Cuidado de tu negocio:</strong> Nunca implementaré un cambio que ponga en riesgo tu operación actual sin haberlo probado exhaustivamente antes.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section text-center reveal" style="padding-top: 0;">
-  <a href="https://drive.google.com/file/d/1UtWNVi0XGY-u9zxQ2agOrFLKIRGWCcpV/view?usp=sharing" target="_blank" class="btn-print-doc" style="text-decoration: none;">
-    <span class="print-icon">📄</span> Ver versión PDF corporativa
-  </a>
-</section>
-
-<section class="cta-section" id="contacto">
-  <div class="reveal" style="position:relative;z-index:2; max-width: 600px; margin: 0 auto;">
-    <h2 class="cta-title">¿Damos el siguiente paso?</h2>
-    <p class="cta-subtitle">Me encantaría hacer equipo con ustedes. Envíame un mensaje y coordinemos una breve charla para definir el camino ideal para <span class="brand-highlight" style="background:transparent; padding:0; color:white; border-bottom:1px solid rgba(255,255,255,0.5);">Incunabula</span>.</p>
-    
-    <div class="wa-form-container">
-      <textarea id="wa-message" placeholder="Hola Jordan, soy Laura. Revisamos la propuesta para Incunabula y nos gustaría avanzar..."></textarea>
-      <button id="wa-send" class="btn-whatsapp pulse-anim">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.38c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.663-2.062-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-        </svg>
-        Conversemos por WhatsApp
-      </button>
-    </div>
-  </div>
-</section>
-
-<footer class="main-footer">
-  <div class="footer-grid">
-    <div class="footer-col brand-col">
-      <div class="footer-brand">Jordan Marles</div>
-      <p class="footer-bio">Experto en Web Management. Ayudo a e-commerces líderes a escalar sus ventas mediante optimización técnica y experiencias de usuario impecables.</p>
-    </div>
-    <div class="footer-col contact-col">
-      <h4 class="footer-heading">Contacto Directo</h4>
-      <a href="mailto:graphyg.official@gmail.com" class="footer-link">✉️ graphyg.official@gmail.com</a>
-      <a href="tel:+573172464305" class="footer-link">📱 +57 317 246 4305</a>
-      <a href="https://wa.me/573172464305" target="_blank" class="footer-link">💬 WhatsApp Business</a>
-    </div>
-    <div class="footer-col legal-col">
-      <h4 class="footer-heading">Sobre el Documento</h4>
-      <p class="footer-legal">Este documento contiene información estratégica, confidencial y de propiedad intelectual. Diseñado exclusivamente para el análisis y mejora de <strong>Incunabula.co</strong>.</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 Jordan Marles. Todos los derechos reservados.</p>
-  </div>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
