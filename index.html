@@ -67,7 +67,7 @@
                         <span class="risk-badge high">Riesgo Alto</span>
                     </div>
                     <h3>Ceguera de Datos y Penalización</h3>
-                    <p>Emisión de señales SEO tóxicas y absoluta falta de telemetría de conversión.</p>
+                    <p>Emisión de señales SEO tóxicas y falta de telemetría de tráfico.</p>
                     <span class="btn-text">Ver radiografía del problema <i class="ph ph-arrow-right"></i></span>
                 </div>
             </div>
@@ -94,63 +94,58 @@
                     </div>
                     
                     <div class="accordion-group phase-group">
-                        <!-- FASE 1 -->
                         <div class="accordion">
                             <button class="accordion-trigger"><span class="phase-label">FASE 1</span> Restauración de Comunicación MTA <i class="ph ph-caret-down"></i></button>
                             <div class="accordion-panel">
                                 <p>Reestructuramos completamente la forma en que la tienda se comunica con el cliente tras un pago. Se abandona el motor genérico que causa bloqueos por spam.</p>
                                 <ul>
                                     <li><strong>Aislamiento de la capa de envío:</strong> Configuración de un canal seguro e independiente (MTA) para correos transaccionales.</li>
-                                    <li><strong>Autenticación de Dominio:</strong> Alineación de protocolos de seguridad en el servidor para evitar que los recibos caigan en la carpeta de Spam del comprador.</li>
-                                    <li><strong>Auditoría de Logs de Correo:</strong> Pruebas de enrutamiento para asegurar un 100% de tasa de entrega en confirmaciones de pedidos.</li>
+                                    <li><strong>Autenticación de Dominio:</strong> Alineación de protocolos de seguridad en el servidor para evitar que los recibos caigan en Spam.</li>
+                                    <li><strong>Auditoría de Logs de Correo:</strong> Pruebas de enrutamiento para asegurar un 100% de tasa de entrega.</li>
                                 </ul>
                             </div>
                         </div>
-                        <!-- FASE 2 -->
                         <div class="accordion">
-                            <button class="accordion-trigger"><span class="phase-label">FASE 2</span> Saneamiento y Sincronización Core <i class="ph ph-caret-down"></i></button>
+                            <button class="accordion-trigger"><span class="phase-label">FASE 2</span> Saneamiento y Compatibilidad Core <i class="ph ph-caret-down"></i></button>
                             <div class="accordion-panel">
-                                <p>Desactivamos la "bomba de tiempo" técnica alineando el código de la plataforma con la versión requerida por el servidor, liberando recursos críticos.</p>
+                                <p>Desactivamos la "bomba de tiempo" técnica asegurando la compatibilidad nativa del código con el servidor moderno, liberando recursos críticos.</p>
                                 <ul>
-                                    <li><strong>Sincronización de Runtime (Entorno de ejecución):</strong> Ajuste de la versión del núcleo del servidor para hacerla compatible con los algoritmos de la tienda.</li>
-                                    <li><strong>Limpieza profunda de Base de Datos:</strong> Escaneo y eliminación de "transients" (tablas temporales huérfanas) y basura digital que hoy están asfixiando el ancho de banda interno.</li>
-                                    <li><strong>Optimización de Consultas al Buscador:</strong> Ajuste en la capa de procesamiento del índice para que la búsqueda de 15,000 SKUs no colapse el procesador del servidor.</li>
+                                    <li><strong>Compatibilidad Nativa PHP 8.2+:</strong> Identificación, actualización y refactorización de dependencias (ej. Elementor, plugins obsoletos) para que operen sin conflictos en el entorno moderno.</li>
+                                    <li><strong>Limpieza profunda de Base de Datos:</strong> Escaneo y eliminación de tablas temporales huérfanas y basura digital que asfixian el ancho de banda.</li>
+                                    <li><strong>Optimización de Consultas al Buscador:</strong> Ajuste en la capa del índice para que la búsqueda de 15,000 SKUs no colapse el procesador.</li>
                                 </ul>
                             </div>
                         </div>
-                        <!-- FASE 3 -->
                         <div class="accordion">
-                            <button class="accordion-trigger"><span class="phase-label">FASE 3</span> Blindaje SEO y Telemetría <i class="ph ph-caret-down"></i></button>
+                            <button class="accordion-trigger"><span class="phase-label">FASE 3</span> Blindaje SEO y Telemetría Base <i class="ph ph-caret-down"></i></button>
                             <div class="accordion-panel">
-                                <p>Frenamos la fuga de tráfico orgánico e instalamos los "sensores" necesarios para que el negocio deje de operar a ciegas.</p>
+                                <p>Frenamos la fuga de tráfico orgánico e instalamos los sensores base para entender la adquisición de usuarios.</p>
                                 <ul>
-                                    <li><strong>Detención del "Spillover" de indexación:</strong> Implementación de reglas <code>noindex</code> dinámicas para evitar que cientos de páginas de sistema (carritos duplicados) penalicen la tienda en Google.</li>
-                                    <li><strong>Instalación de Puente de Datos (Data Layer):</strong> Configuración de infraestructura analítica base para rastrear con exactitud en qué paso del proceso de compra están huyendo los clientes.</li>
-                                    <li><strong>Validación de Rutas Huérfanas:</strong> Purga de URLs muertas que desperdician el presupuesto de rastreo de Google (Crawl Budget).</li>
+                                    <li><strong>Detención del "Spillover" de indexación:</strong> Implementación de reglas <code>noindex</code> dinámicas para evitar que páginas basura penalicen la tienda en Google.</li>
+                                    <li><strong>Instalación de Telemetría Base (GA4):</strong> Configuración de infraestructura analítica para rastrear el volumen y origen de las visitas, eliminando la ceguera de tráfico.</li>
+                                    <li><strong>Validación de Rutas Huérfanas:</strong> Purga de URLs muertas que desperdician el Crawl Budget.</li>
                                 </ul>
                             </div>
                         </div>
-                        <!-- FASE 4 -->
                         <div class="accordion">
                             <button class="accordion-trigger"><span class="phase-label">FASE 4</span> Auditoría de Credibilidad y UX <i class="ph ph-caret-down"></i></button>
                             <div class="accordion-panel">
-                                <p>Eliminación sistemática de todo rastro de plantillas baratas y configuraciones de desarrollo que destruyen la confianza del cliente justo en el embudo de ventas.</p>
+                                <p>Eliminación sistemática de todo rastro de plantillas baratas y configuraciones heredadas que destruyen la confianza del cliente.</p>
                                 <ul>
-                                    <li><strong>Escaneo y purga de "Dummy Content":</strong> Eliminación de testimonios falsos, textos en latín (Lorem Ipsum) y correos de ejemplo que quedaron olvidados en producción.</li>
-                                    <li><strong>Corrección de Reglas de Negocio:</strong> Sincronización del umbral de envío gratuito (eliminando la discrepancia entre las barras de anuncios y el carrito real).</li>
-                                    <li><strong>Saneamiento de Enlaces Fantasma:</strong> Eliminación de botones que dirigen a sitios web de prueba de terceros, protegiendo al usuario de fugas del embudo de conversión.</li>
+                                    <li><strong>Escaneo y purga de "Dummy Content":</strong> Eliminación de testimonios falsos y correos de ejemplo olvidados en producción.</li>
+                                    <li><strong>Corrección de Reglas de Negocio:</strong> Sincronización del umbral de envío gratuito en toda la tienda.</li>
+                                    <li><strong>Saneamiento de Enlaces Fantasma:</strong> Eliminación de botones que dirigen a sitios de terceros, protegiendo el embudo.</li>
                                 </ul>
                             </div>
                         </div>
-                        <!-- FASE 5 -->
                         <div class="accordion">
                             <button class="accordion-trigger"><span class="phase-label">FASE 5</span> QA de Pasarelas y Empalme <i class="ph ph-caret-down"></i></button>
                             <div class="accordion-panel">
-                                <p>El filtro final antes de volver a producción. Garantizamos que la máquina de recibir pagos esté perfectamente lubricada tras la intervención técnica.</p>
+                                <p>El filtro final antes de volver a producción. Garantizamos que la máquina de recibir pagos esté perfectamente lubricada.</p>
                                 <ul>
-                                    <li><strong>Simulaciones de estrés algorítmico:</strong> Transacciones controladas de principio a fin usando los entornos seguros (Sandbox) de Wompi y Addi.</li>
-                                    <li><strong>Verificación de Callbacks (Webhooks):</strong> Comprobación técnica de que la pasarela le avisa correctamente a la tienda que el pago fue exitoso, cambiando el estado del pedido en milisegundos.</li>
-                                    <li><strong>Empalme "Zero Downtime":</strong> Despliegue de los arreglos desde el servidor clonado hacia la tienda en vivo durante horas de bajo tráfico.</li>
+                                    <li><strong>Simulaciones de estrés algorítmico:</strong> Transacciones controladas usando los entornos Sandbox de Wompi y Addi.</li>
+                                    <li><strong>Verificación de Callbacks (Webhooks):</strong> Comprobación de que la pasarela le avisa correctamente a la tienda que el pago fue exitoso.</li>
+                                    <li><strong>Empalme "Zero Downtime":</strong> Despliegue de los arreglos hacia la tienda en vivo en horas de bajo tráfico.</li>
                                 </ul>
                             </div>
                         </div>
@@ -166,9 +161,10 @@
                     <button class="accordion-trigger">Condiciones Comerciales y SLA de Seguridad <i class="ph ph-shield-check"></i></button>
                     <div class="accordion-panel">
                         <ul>
-                            <li><strong>Metodología "Zero Risk":</strong> El sitio en vivo continuará operando y recibiendo ingresos con normalidad. Todo el desarrollo destructivo y las pruebas se realizarán en un clon privado en nuestros servidores.</li>
-                            <li><strong>Gestión de Licencias:</strong> El presupuesto de este programa es exclusivamente por honorarios de consultoría e ingeniería. No ampara la renovación ni el pago de licencias de software de terceros requeridas por la plataforma (ej. FiboSearch).</li>
-                            <li><strong>Estructura de Inversión:</strong> 50% de anticipo para asignación de agenda y levantar el entorno seguro, y 50% al finalizar el empalme a producción con los resultados validados.</li>
+                            <li><strong>Metodología "Zero Risk":</strong> El sitio en vivo continuará operando con normalidad. Todo el desarrollo se realizará en un clon privado.</li>
+                            <li><strong>Garantía de Estabilización (Hypercare):</strong> 30 días de cobertura y soporte técnico gratuito y exclusivo para atender cualquier regresión sobre los componentes intervenidos. *No cubre caídas ocasionadas por actualizaciones de terceros o mal uso posterior a la entrega.</li>
+                            <li><strong>Gestión de Licencias:</strong> Este presupuesto es exclusivamente por honorarios de ingeniería. No ampara el pago de licencias de software de terceros (ej. FiboSearch).</li>
+                            <li><strong>Inversión:</strong> 50% de anticipo para asignar agenda y levantar entorno seguro, y 50% al finalizar el empalme con resultados validados.</li>
                         </ul>
                     </div>
                 </div>
@@ -176,15 +172,15 @@
         </section>
     </main>
 
-    <!-- Modals (Radiografías extendidas) -->
+    <!-- Modals -->
     <div class="modal-overlay" id="modal-comunicacion">
         <div class="modal danger-modal">
             <button class="modal-close" onclick="closeModals()"><i class="ph ph-x"></i></button>
             <h3>Fallo de Integridad en Correos</h3>
             <div class="modal-alert"><i class="ph-fill ph-warning"></i> IMPACTO: Bloqueo Operativo y Riesgo de Fraude</div>
-            <p><strong>Síntoma Clínico:</strong> El servidor ha generado un embudo en el protocolo de transporte de mensajería genérico. Los correos salen sin firmas de seguridad (SPF/DKIM) y el servidor de Hostinger o los proveedores como Gmail los interceptan como posibles amenazas o spam.</p>
-            <p><strong>Consecuencia Directa:</strong> El cliente queda totalmente a ciegas tras realizar un pago (no hay factura ni confirmación). Esto dispara alarmas de fraude bancario, incrementa los contracargos (Chargebacks) y satura de quejas los canales de atención al cliente.</p>
-            <p><strong>Vector de Resolución:</strong> Hay que aislar la capa de envíos transaccionales y encriptarla bajo un protocolo dedicado para garantizar el 100% de la entregabilidad directa a la bandeja de entrada.</p>
+            <p><strong>Síntoma Clínico:</strong> El servidor ha generado un embudo en el protocolo de transporte de mensajería. Los correos salen sin firmas de seguridad (SPF/DKIM) y el servidor los intercepta como posible spam.</p>
+            <p><strong>Consecuencia Directa:</strong> El cliente queda a ciegas tras realizar un pago. Esto dispara alarmas de fraude, incrementa los contracargos y satura de quejas el servicio al cliente.</p>
+            <p><strong>Vector de Resolución:</strong> Aislamiento de la capa de envíos transaccionales enrutada bajo un protocolo encriptado dedicado para garantizar la entregabilidad.</p>
         </div>
     </div>
     <div class="modal-overlay" id="modal-inestabilidad">
@@ -192,19 +188,19 @@
             <button class="modal-close" onclick="closeModals()"><i class="ph ph-x"></i></button>
             <h3>Desincronización del Núcleo</h3>
             <div class="modal-alert critical-alert"><i class="ph-fill ph-warning-octagon"></i> IMPACTO: Bomba de Tiempo (Caída de sitio)</div>
-            <p><strong>Síntoma Clínico:</strong> El núcleo principal de la tienda y sus constructores operan en un entorno de ejecución (Runtime Environment) severamente desfasado de los estándares exigidos por el servidor actual (Conflicto de versiones estructural).</p>
-            <p><strong>Consecuencia Directa:</strong> Esto desencadena incompatibilidades en cadena, creando una masiva acumulación de "basura digital" en las bases de datos cada vez que un cliente hace una acción. La tienda se asfixia en rendimiento, el panel de métricas ya se rompió, y toda la operación está expuesta a un "Fatal Error" que deje el sitio en blanco.</p>
-            <p><strong>Vector de Resolución:</strong> Una alineación milimétrica del código del núcleo bajando temporalmente los umbrales de exigencia del servidor, seguido de una purga masiva de datos temporales huérfanos.</p>
+            <p><strong>Síntoma Clínico:</strong> Dependencias obsoletas (constructores y plugins) operan en un entorno de ejecución severamente desfasado respecto al servidor actual (Conflicto de versiones estructural en PHP 8.2).</p>
+            <p><strong>Consecuencia Directa:</strong> Incompatibilidades en cadena que crean una acumulación masiva de "basura digital". La tienda se asfixia en rendimiento, el panel de métricas se rompe, y la operación queda expuesta a un "Fatal Error" inminente.</p>
+            <p><strong>Vector de Resolución:</strong> Auditoría forense de plugins, actualización del stack de constructores y refactorización de dependencias para asegurar compatibilidad nativa, seguido de una purga masiva de datos temporales.</p>
         </div>
     </div>
     <div class="modal-overlay" id="modal-facturacion">
         <div class="modal danger-modal">
             <button class="modal-close" onclick="closeModals()"><i class="ph ph-x"></i></button>
             <h3>Penalización Orgánica y Ceguera de Datos</h3>
-            <div class="modal-alert"><i class="ph-fill ph-warning"></i> IMPACTO: Fuga Constante de Capital</div>
-            <p><strong>Síntoma Clínico:</strong> A nivel de arquitectura, el sitio sufre de <em>Spillover de indexación</em>, emitiendo cientos de señales tóxicas a Google (se le está pidiendo a Google que lea más de 600 páginas de paginación vacías y páginas clonadas de prueba).</p>
-            <p><strong>Consecuencia Directa:</strong> El presupuesto de rastreo de Google se agota en basura, frenando el posicionamiento SEO de los 15,000 libros importantes. Sumado a esto, el negocio opera con <strong>ceguera telemétrica absoluta</strong>: no hay sensores modernos para medir conversiones, imposibilitando saber si el cliente abandona el carrito por fallas de diseño, de precio o técnicas.</p>
-            <p><strong>Vector de Resolución:</strong> Inyección de reglas de exclusión para motores de búsqueda (No-index dinámico) y construcción de un puente de recolección de datos (Data Layer) anclado a plataformas analíticas modernas.</p>
+            <div class="modal-alert"><i class="ph-fill ph-warning"></i> IMPACTO: Fuga Constante de Tráfico</div>
+            <p><strong>Síntoma Clínico:</strong> El sitio sufre de <em>Spillover de indexación</em>, emitiendo cientos de señales tóxicas a Google mediante páginas basura indexables.</p>
+            <p><strong>Consecuencia Directa:</strong> El presupuesto de rastreo de Google se agota, frenando el posicionamiento de los 15,000 libros. Además, el negocio opera con ceguera telemétrica: no hay sensores modernos para medir de dónde vienen las visitas.</p>
+            <p><strong>Vector de Resolución:</strong> Inyección de reglas No-index dinámicas para detener la penalización, e instalación de infraestructura de rastreo de tráfico base (GA4) para entender el flujo de adquisición.</p>
         </div>
     </div>
 
