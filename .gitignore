@@ -29,3 +29,19 @@ Screenshots antes/
 # Permitir imágenes específicas si estuviesen dentro de la propuesta
 !propuesta/*.png
 !propuesta/*.jpg
+
+# // ✅ BEST PRACTICE: Ignorar reportes, PDFs, archivos Markdown y directorios de diagnóstico locales en el repo
+*.pdf
+*.csv
+*.md
+auditoria_y_diagnostico/
+planes_ejecucion/
+cierre_proyecto/*.md
+incunabula_technical_due_diligence.html
+deep-research-report-CHATGPT.md
+Grounding final especifico.md
+content.md
+guion_ventas.md
+propuesta_pdf.md
+!README.md # Permitir README si existiera
+
