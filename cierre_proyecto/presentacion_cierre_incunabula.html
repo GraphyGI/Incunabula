@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incunabula — E-commerce Optimizado ✅</title>
+    <meta name="description" content="Resultados del proyecto de estabilización y optimización del e-commerce Incunabula.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- // 📚 LEARN: Importamos la fuente 'Sora' desde Google Fonts para mantener la identidad tipográfica real de la web de Incunabula -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ── DESIGN TOKENS ────────────────────────── */
+        /* // ✅ BEST PRACTICE: Uso de variables CSS para mantener una paleta de colores centralizada y coherente con el branding de la marca */
+        :root {
+            --color-bg: #FCFAF7;
+            --color-surface: #ffffff;
+            --color-surface-alt: #f5eedf;
+            --color-border: rgba(36,36,36,0.06);
+            --color-text: #242424;
+            --color-text-muted: #706b64;
+            --color-accent: #F2C71B; /* Amarillo dorado oficial de Incunabula */
+            --color-accent-light: #fcd34d;
+            --color-accent-dark: #b48406;
+            --color-gold: #d97706;
+            --color-gold-light: #f59e0b;
+            --color-violet: #7c3aed;
+            --color-violet-light: #8b5cf6;
+            --color-success: #15803d; /* Verde bosque elegante para logros */
+            --color-danger: #b91c1c; /* Rojo elegante para amenazas y basura eliminada */
+            --color-info: #1d4ed8; /* Azul tecnológico para próximos pasos */
+            --font-sans: 'Sora', system-ui, -apple-system, sans-serif;
+            --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+            --radius: 20px;
+            --radius-sm: 12px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.08);
+        }
+
+        /* ── RESET & BASE ────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── SITE HEADER ────────────────────────── */
+        .site-header {
+            position: fixed;
+            top: 1.5rem;
+            left: 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.4s ease;
+        }
+        .site-logo {
+            height: 44px;
+            width: auto;
+            display: block;
+            border-radius: 8px;
+            background: white;
+            padding: 5px 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+        }
+        /* Ocultar logo fijo en la diapositiva de portada (Slide 0) */
+        body.slide-active-0 .site-header {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ── SITE FOOTER ────────────────────────── */
+        /* // ✅ BEST PRACTICE: Footer fijo y con efecto de desenfoque de fondo (glassmorphism) para facilitar la navegación rápida */
+        .site-footer {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.75rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--color-border);
+            border-radius: 99px;
+            box-shadow: var(--shadow-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        /* Ocultar en portada (Slide 0) y CTA de cierre (Slide 7) para evitar superposiciones e interferencia visual */
+        body.slide-active-0 .site-footer,
+        body.slide-active-7 .site-footer {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .footer-brand-tag {
+            font-weight: 700;
+            color: var(--color-text);
+        }
+        .footer-nav {
+            display: flex;
+            gap: 1.25rem;
+            list-style: none;
+        }
+        .footer-link {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-link:hover {
+            color: var(--color-accent-dark);
+        }
+        .footer-doc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--color-info);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .footer-doc-link:hover {
+            color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+        .footer-doc-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ── SLIDE STRUCTURE ────────────────────── */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            scroll-snap-align: start;
+            position: relative;
+        }
+        .slide-inner {
+            max-width: 1000px;
+            width: 100%;
+        }
+        .slide-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            font-family: var(--font-mono);
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+
+        /* ── HERO SLIDE ────────────────────────── */
+        /* // ✅ BEST PRACTICE: Fondo claro y sobrio con un contenedor blanco para integrar la imagen sin "parches" de color */
+        .slide-hero {
+            background: linear-gradient(135deg, #F5F2EB 0%, #EBE6DC 100%);
+            color: var(--color-text);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(242, 199, 27, 0.04) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(36,36,36,0.02) 0%, transparent 50%);
+            animation: shimmer 20s ease-in-out infinite alternate;
+        }
+        @keyframes shimmer {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(-5%, -5%) rotate(3deg); }
+        }
+        .slide-hero .slide-inner { position: relative; z-index: 1; }
+        
+        .hero-card {
+            background: #ffffff;
+            border: 1px solid rgba(36,36,36,0.05);
+            border-radius: var(--radius);
+            padding: 3rem 4rem;
+            box-shadow: var(--shadow-lg);
+            max-width: 850px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .hero-logo {
+            max-width: 280px;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(242, 199, 27, 0.12);
+            border: 1px solid rgba(242, 199, 27, 0.25);
+            border-radius: 99px;
+            padding: 0.5rem 1.25rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.02em;
+            color: var(--color-accent-dark);
+        }
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--color-accent-dark);
+        }
+        
+        /* Botón de Enlace al Documento de Google en Portada */
+        .hero-doc-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--color-text);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.85rem 2.2rem;
+            border-radius: 99px;
+            text-decoration: none;
+            margin-top: 1.75rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-sm);
+        }
+        .hero-doc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(36, 36, 36, 0.15);
+            background: #000000;
+        }
+        .hero-doc-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 2;
+        }
+
+        /* ── TYPOGRAPHY ──────────────────────────── */
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: var(--color-text);
+        }
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-accent-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin-bottom: 0.75rem;
+        }
+        .slide-hero h3 { color: var(--color-text-muted); }
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        .slide-hero .subtitle { color: var(--color-text-muted); margin: 0 auto; }
+        .label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+        .slide-hero .label { color: var(--color-text-muted); opacity: 0.8; }
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+            border-radius: 2px;
+            margin: 1.5rem 0;
+        }
+        .slide-hero .divider {
+            background: linear-gradient(90deg, var(--color-accent-dark), rgba(180, 132, 6, 0.2));
+            margin: 1.25rem auto;
+        }
+
+        /* ── METRIC CARDS ─────────────────────────── */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+        .metric-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+        .metric-value.green { color: var(--color-success); }
+        .metric-value.gold { color: var(--color-gold); }
+        .metric-value.violet { color: var(--color-gold); } /* Adaptado a gama cálida de la marca */
+        .metric-value.blue { color: var(--color-info); }
+        .metric-value.accent { color: var(--color-accent-dark); }
+        .metric-value.red { color: var(--color-danger) !important; }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .metric-label.red-text {
+            color: var(--color-danger) !important;
+        }
+        .metric-detail {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            opacity: 0.7;
+            margin-top: 0.5rem;
+            font-family: var(--font-mono);
+        }
+
+        /* ── PROBLEM CARDS ────────────────────────── */
+        .problems-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+        .problem-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 1.75rem 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .problem-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow);
+        }
+        .problem-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+        /* Iconos unificados en paleta cálida ámbar de la marca para dolores resueltos */
+        .problem-icon.pay { background: linear-gradient(135deg, #fffbeb, #fde68a); color: var(--color-accent-dark); }
+        .problem-icon.mail { background: linear-gradient(135deg, #fffbeb, #fde68a); color: var(--color-accent-dark); }
+        .problem-icon.shield { background: linear-gradient(135deg, #fffbeb, #fde68a); color: var(--color-accent-dark); }
+        .problem-icon.db { background: linear-gradient(135deg, #fffbeb, #fde68a); color: var(--color-accent-dark); }
+        .problem-icon.filter { background: linear-gradient(135deg, #fffbeb, #fde68a); color: var(--color-accent-dark); }
+        .problem-content h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: var(--color-text);
+        }
+        .problem-content p {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* ── SECURITY CARDS ──────────────────────── */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+        .security-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .security-card.resolved { border-left: 4px solid var(--color-success); }
+        .security-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.85rem;
+            border-radius: 99px;
+            margin-bottom: 0.75rem;
+        }
+        .security-badge.resolved-badge { background: #dcfce7; color: #166534; }
+        .security-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .security-card p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* ── BEFORE/AFTER ─────────────────────────── */
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        .ba-col {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .ba-col h4 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.25rem;
+        }
+        .ba-col.before h4 { color: var(--color-danger); }
+        .ba-col.after h4 { color: var(--color-success); }
+        .ba-arrow {
+            font-size: 2.5rem;
+            color: var(--color-accent-dark);
+            font-weight: 300;
+        }
+        .ba-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 0;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--color-border);
+            font-weight: 500;
+        }
+        .ba-item:last-child { border-bottom: none; }
+
+        /* ── EVOLUTION BLOCKS ─────────────────────── */
+        .evo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+        .evo-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .evo-card:hover {
+            border-color: var(--color-accent-dark);
+            box-shadow: var(--shadow);
+            transform: translateY(-4px);
+        }
+        .evo-card .evo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        /* Colores unificados e inspirados en pasos a seguir (azul/tecnología y crecimiento) */
+        .evo-card .evo-icon.i-chart { background: linear-gradient(135deg, #eff6ff, #bfdbfe); color: var(--color-info); }
+        .evo-card .evo-icon.i-cart { background: linear-gradient(135deg, #eff6ff, #bfdbfe); color: var(--color-info); }
+        .evo-card .evo-icon.i-bolt { background: linear-gradient(135deg, #eff6ff, #bfdbfe); color: var(--color-info); }
+        .evo-card .evo-icon.i-robot { background: linear-gradient(135deg, #eff6ff, #bfdbfe); color: var(--color-info); }
+        .evo-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .evo-card p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+        .evo-metric {
+            display: inline-block;
+            font-size: 0.72rem;
+            color: var(--color-info);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            margin-top: 0.75rem;
+            background: #eff6ff;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        /* ── CTA SLIDE ────────────────────────────── */
+        .cta-box {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            border-radius: var(--radius);
+            padding: 3.5rem;
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 50%);
+        }
+        .cta-box * { position: relative; z-index: 1; }
+        .cta-box h2 {
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+        .cta-box p {
+            color: #4a473f;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--color-text);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 99px;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            letter-spacing: 0.01em;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            background-color: #000000;
+        }
+        .cta-note {
+            font-size: 0.8rem;
+            color: rgba(36,36,36,0.6);
+            margin-top: 1rem;
+        }
+
+        /* ── BOTTOM CARDS ────────────────────────── */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .bottom-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .bottom-card .bc-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--color-accent-dark);
+            margin-bottom: 0.25rem;
+        }
+        .bottom-card .bc-label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* ── NAVIGATION ───────────────────────────── */
+        .nav-dots {
+            position: fixed;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 100;
+        }
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-text-muted);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .nav-dot.active {
+            opacity: 1;
+            background: var(--color-accent-dark);
+            transform: scale(1.4);
+            border-color: rgba(180,132,6,0.3);
+        }
+        .nav-dot:hover { opacity: 0.7; }
+
+        /* ── ANIMATIONS ───────────────────────────── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-inner > * {
+            opacity: 0;
+            animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .slide-inner > *:nth-child(1) { animation-delay: 0.05s; }
+        .slide-inner > *:nth-child(2) { animation-delay: 0.15s; }
+        .slide-inner > *:nth-child(3) { animation-delay: 0.25s; }
+        .slide-inner > *:nth-child(4) { animation-delay: 0.35s; }
+        .slide-inner > *:nth-child(5) { animation-delay: 0.45s; }
+
+        /* ── CONFETTI ─────────────────────────────── */
+        .confetti-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            opacity: 0;
+            animation: confettiFall 4s ease-in-out infinite;
+        }
+        @keyframes confettiFall {
+            0% { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.6; }
+            100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+        }
+
+        /* ── RESPONSIVE ───────────────────────────── */
+        @media (max-width: 768px) {
+            .slide { padding: 2.5rem 1.25rem; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .security-grid { grid-template-columns: 1fr; }
+            .ba-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .ba-arrow { transform: rotate(90deg); }
+            .evo-grid { grid-template-columns: 1fr; }
+            .bottom-grid { grid-template-columns: 1fr; }
+            .metric-value { font-size: 2.2rem; }
+            .nav-dots { display: none; }
+            .slide-number { top: 1rem; right: 1rem; }
+            .cta-box { padding: 2rem 1.5rem; }
+            h1 { font-size: 2.2rem; }
+            .site-header { top: 1rem; left: 1rem; }
+            .site-logo { height: 32px; }
+            .site-footer { display: none; } /* Ocultar en móviles para evitar colisiones */
+            .hero-card { padding: 2rem 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .metrics-grid { grid-template-columns: 1fr; }
+            .problem-card { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FIXED BRAND HEADER -->
+    <header class="site-header" aria-label="Logo de la marca">
+        <img src="https://incunabula.co/wp-content/uploads/Incunabula-logo-horizontal-1024x692_compressed.jpg" alt="Incunabula Logo" class="site-logo">
+    </header>
+
+    <!-- FIXED BRAND FOOTER WITH NAVIGATION LINKS AND DOCUMENT LINK -->
+    <footer class="site-footer" aria-label="Enlaces clave de navegación">
+        <div class="footer-left">
+            <span class="footer-brand-tag">Incunabula.co</span>
+            <span>· Rescate E-commerce 2026</span>
+        </div>
+        <ul class="footer-nav">
+            <li><a href="#slide-1" class="footer-link" onclick="scrollToSlide(1); return false;">Resultados</a></li>
+            <li><a href="#slide-3" class="footer-link" onclick="scrollToSlide(3); return false;">Seguridad</a></li>
+            <li><a href="#slide-4" class="footer-link" onclick="scrollToSlide(4); return false;">Antes vs. Después</a></li>
+            <li><a href="#slide-6" class="footer-link" onclick="scrollToSlide(6); return false;">Próximos Pasos</a></li>
+            <li><a href="#slide-7" class="footer-link" onclick="scrollToSlide(7); return false;">Cierre</a></li>
+        </ul>
+        <div class="footer-right">
+            <a href="https://docs.google.com/document/d/18NjnnBd_L_mImF9OrKEVkgT821-2nlBt1F1rsmqVd5w/edit?usp=sharing" target="_blank" class="footer-doc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Informe Google Doc 📄
+            </a>
+        </div>
+    </footer>
+
+    <!-- NAV DOTS -->
+    <nav class="nav-dots" aria-label="Navegación de diapositivas">
+        <div class="nav-dot active" onclick="scrollToSlide(0)" title="Portada"></div>
+        <div class="nav-dot" onclick="scrollToSlide(1)" title="Resultados"></div>
+        <div class="nav-dot" onclick="scrollToSlide(2)" title="Dolores Resueltos"></div>
+        <div class="nav-dot" onclick="scrollToSlide(3)" title="Seguridad"></div>
+        <div class="nav-dot" onclick="scrollToSlide(4)" title="Antes vs Después"></div>
+        <div class="nav-dot" onclick="scrollToSlide(5)" title="Oportunidades"></div>
+        <div class="nav-dot" onclick="scrollToSlide(6)" title="Próximos Pasos"></div>
+        <div class="nav-dot" onclick="scrollToSlide(7)" title="Cierre Comercial"></div>
+    </nav>
+
+    <!-- SLIDE 1: HERO / PORTADA -->
+    <section class="slide slide-hero" id="slide-0">
+        <div class="confetti-container" id="confetti-box"></div>
+        <div class="slide-inner">
+            <!-- // ✅ BEST PRACTICE: Contenedor blanco (hero-card) para integrar el logo con fondo blanco sin parches visuales -->
+            <div class="hero-card">
+                <!-- Logo oficial de la marca -->
+                <img src="https://incunabula.co/wp-content/uploads/Incunabula-logo-horizontal-1024x692_compressed.jpg" alt="Incunabula Logo" class="hero-logo">
+                
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Proyecto Completado
+                </div>
+                <h1>E-commerce Optimizado</h1>
+                <div class="divider"></div>
+                <p class="subtitle">Tu tienda en línea ha sido estabilizada, asegurada y optimizada. Aquí están los resultados.</p>
+                
+                <!-- Botón de acceso al Informe de Google Docs completo en Portada -->
+                <div>
+                    <a href="https://docs.google.com/document/d/18NjnnBd_L_mImF9OrKEVkgT821-2nlBt1F1rsmqVd5w/edit?usp=sharing" target="_blank" class="hero-doc-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Ver Informe Final Completo (Google Doc)
+                    </a>
+                </div>
+
+                <p class="label" style="margin-top:2.5rem;">7 de junio 2026 · Jordan Marles</p>
+                <p class="label" style="margin-top:0.5rem;">Presupuesto: $3.500.000 COP · Duración: 4 semanas</p>
+            </div>
+        </div>
+        <span class="slide-number" style="color:var(--color-text-muted); opacity: 0.5;">01 / 08</span>
+    </section>
+
+    <!-- SLIDE 2: RESULTADOS MEDIBLES -->
+    <section class="slide" id="slide-1">
+        <div class="slide-inner">
+            <h3>Resultados Medibles</h3>
+            <h2>Lo que logramos en números</h2>
+            <div class="divider"></div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value green" data-count="42">0</div>
+                    <div class="metric-label">De plugins eliminados</div>
+                    <div class="metric-detail">De 59 → 34 plugins limpios</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value green" data-count="100" data-suffix="%">0</div>
+                    <div class="metric-label">Errores del servidor eliminados</div>
+                    <div class="metric-detail">De 41.375 líneas → 0 errores</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value accent" data-count="0" data-static="true">0</div>
+                    <div class="metric-label">Plugins pirateados restantes</div>
+                    <div class="metric-detail">Antes: 7 con puertas traseras</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value gold">$489</div>
+                    <div class="metric-label">USD/año ahorrados</div>
+                    <div class="metric-detail">Licencias piratas → alternativas gratis</div>
+                </div>
+                <div class="metric-card">
+                    <!-- Red metrics for garbage deleted per customer instruction -->
+                    <div class="metric-value red" data-count="14" data-suffix="K+">0</div>
+                    <div class="metric-label red-text">Registros basura eliminados</div>
+                    <div class="metric-detail">Revisiones, transitorios, huérfanos</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value green" data-count="100" data-suffix="%">0</div>
+                    <div class="metric-label">Correos funcionando</div>
+                    <div class="metric-detail">FluentSMTP + Brevo + DNS verificado</div>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">02 / 08</span>
+    </section>
+
+    <!-- SLIDE 3: DOLORES RESUELTOS -->
+    <section class="slide" id="slide-2">
+        <div class="slide-inner">
+            <h3>Dolores Eliminados</h3>
+            <h2>Lo que ya no va a pasar</h2>
+            <div class="divider"></div>
+            <div class="problems-list">
+                <div class="problem-card">
+                    <div class="problem-icon pay">💳</div>
+                    <div class="problem-content">
+                        <h4>Los clientes ya pueden pagar sin errores</h4>
+                        <p>La pasarela Wompi se caía 11 veces en 17 segundos por un plugin defectuoso. Se eliminó el causante, se actualizó Wompi a v3.2.0 y se configuró la llave de seguridad que faltaba.</p>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon mail">📧</div>
+                    <div class="problem-content">
+                        <h4>Los correos de confirmación llegan a la bandeja de entrada</h4>
+                        <p>Antes los correos salían rotos o iban a spam. Ahora salen por un sistema profesional (Brevo) con firma digital verificada por Google y Outlook.</p>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon shield">🔒</div>
+                    <div class="problem-content">
+                        <h4>La tienda está libre de virus y software pirata</h4>
+                        <p>Se eliminaron 7 plugins ilegales que dejaban puertas abiertas a hackers, y 4 plugins con vulnerabilidades graves (incluida una de robo de base de datos). Todo el software ahora es legítimo.</p>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon db">🗄️</div>
+                    <div class="problem-content">
+                        <h4>La base de datos ya no está inflada</h4>
+                        <p>Se eliminaron más de 14.000 registros basura (revisiones acumuladas, transitorios caducados, metadatos huérfanos). Tu tienda responde más rápido.</p>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon filter">🔍</div>
+                    <div class="problem-content">
+                        <h4>Los filtros de la tienda funcionan de nuevo</h4>
+                        <p>Se reconstruyeron los filtros de categoría, precio, autor y estado con widgets nativos de WooCommerce, eliminando la dependencia de un plugin inestable (JetSmartFilters).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">03 / 08</span>
+    </section>
+
+    <!-- SLIDE 4: SEGURIDAD -->
+    <section class="slide" id="slide-3">
+        <div class="slide-inner">
+            <h3>Blindaje Digital</h3>
+            <h2>Seguridad al 100%</h2>
+            <div class="divider"></div>
+            <div class="security-grid">
+                <div class="security-card resolved">
+                    <span class="security-badge resolved-badge">✓ Resuelto</span>
+                    <h4>Robo de Base de Datos (SQL Injection)</h4>
+                    <p>Un hacker podía robar nombres, correos y direcciones de todos tus clientes sin contraseña. Plugin eliminado y reemplazado por alternativa segura.</p>
+                </div>
+                <div class="security-card resolved">
+                    <span class="security-badge resolved-badge">✓ Resuelto</span>
+                    <h4>Toma de Control (Escalación de Privilegios)</h4>
+                    <p>Un atacante podía convertirse en administrador de tu tienda. Plugin eliminado completamente del servidor.</p>
+                </div>
+                <div class="security-card resolved">
+                    <span class="security-badge resolved-badge">✓ Resuelto</span>
+                    <h4>7 Plugins con Puertas Traseras</h4>
+                    <p>Software pirata con código potencialmente malicioso. Todos eliminados y reemplazados por versiones oficiales gratuitas.</p>
+                </div>
+                <div class="security-card resolved">
+                    <span class="security-badge resolved-badge">✓ Resuelto</span>
+                    <h4>Formularios Vulnerables (WPForms)</h4>
+                    <p>Plugin desactualizado (~30 versiones atrás) con múltiples vulnerabilidades. Borrado físicamente del servidor. Registro migrado al sistema nativo de WooCommerce.</p>
+                </div>
+                <div class="security-card resolved">
+                    <span class="security-badge resolved-badge">✓ Resuelto</span>
+                    <h4>Carpetas Huérfanas Eliminadas</h4>
+                    <p>Se detectaron y eliminaron carpetas residuales de plugins (wpdiscuz, WPForms) que podían ser explotadas por acceso directo a archivos PHP.</p>
+                </div>
+                <div class="security-card resolved">
+                    <span class="security-badge resolved-badge">✓ Resuelto</span>
+                    <h4>Bloqueo de xmlrpc.php</h4>
+                    <p>Vector de ataques DDoS y fuerza bruta bloqueado mediante regla en .htaccess. Ya no es accesible desde internet.</p>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">04 / 08</span>
+    </section>
+
+    <!-- SLIDE 5: ANTES VS DESPUÉS -->
+    <section class="slide" id="slide-4">
+        <div class="slide-inner">
+            <h3>Limpieza Profunda</h3>
+            <h2>Antes vs. Después</h2>
+            <div class="divider"></div>
+            <div class="ba-grid">
+                <div class="ba-col before">
+                    <h4>❌ Antes (7 mayo)</h4>
+                    <div class="ba-item">🔴 59 plugins (muchos piratas)</div>
+                    <div class="ba-item">🔴 41.375 errores en el servidor</div>
+                    <div class="ba-item">🔴 Pagos caídos (Wompi bloqueado)</div>
+                    <div class="ba-item">🔴 Correos rotos o en spam</div>
+                    <div class="ba-item">🔴 Testimonios falsos en la página</div>
+                    <div class="ba-item">🔴 Buscador con software pirata</div>
+                    <div class="ba-item">🔴 4 vulnerabilidades críticas activas</div>
+                </div>
+                <div class="ba-arrow">→</div>
+                <div class="ba-col after">
+                    <!-- Updated date here as requested -->
+                    <h4>✅ Después (7 junio)</h4>
+                    <div class="ba-item">🟢 34 plugins legítimos y actualizados</div>
+                    <div class="ba-item">🟢 0 errores en producción</div>
+                    <div class="ba-item">🟢 Wompi v3.2.0 operativo al 100%</div>
+                    <div class="ba-item">🟢 Brevo + firma digital verificada</div>
+                    <div class="ba-item">🟢 Contenido 100% real y verificado</div>
+                    <div class="ba-item">🟢 FiboSearch Pro con licencia legítima</div>
+                    <div class="ba-item">🟢 0 vulnerabilidades — servidor limpio</div>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">05 / 08</span>
+    </section>
+
+    <!-- SLIDE 6: PRÓXIMA EVOLUCIÓN -->
+    <section class="slide" id="slide-5">
+        <div class="slide-inner">
+            <h3>Oportunidades de Crecimiento</h3>
+            <h2>Tu tienda está lista para el siguiente nivel</h2>
+            <div class="divider"></div>
+            <div class="evo-grid">
+                <div class="evo-card">
+                    <div class="evo-icon i-chart">📊</div>
+                    <h4>Crecimiento Orgánico</h4>
+                    <p>Con Google Analytics activo, ahora puedes ver de dónde vienen tus clientes y qué buscan. Esto te permite invertir mejor en publicidad.</p>
+                    <div class="evo-metric">MÉTRICA: Tráfico orgánico mensual</div>
+                </div>
+                <div class="evo-card">
+                    <div class="evo-icon i-cart">🛒</div>
+                    <h4>Optimización de Conversión</h4>
+                    <p>Rediseñar la página de cada libro con un botón "Comprar Ahora" visible, reseñas de clientes y sellos de confianza puede aumentar las ventas.</p>
+                    <div class="evo-metric">ESTIMADO: +25-45% más ventas por visita</div>
+                </div>
+                <div class="evo-card">
+                    <div class="evo-icon i-bolt">⚡</div>
+                    <h4>Velocidad Premium</h4>
+                    <p>Reemplazar el diseño actual por uno más liviano eliminaría ~200KB de código innecesario por página. Tu tienda cargaría casi al instante.</p>
+                    <div class="evo-metric">META: TTFB de 2.7s → menos de 0.8s</div>
+                </div>
+                <div class="evo-card">
+                    <div class="evo-icon i-robot">🤖</div>
+                    <h4>Automatización de Ventas</h4>
+                    <p>Ya tienes recuperación de carritos abandonados activa. El siguiente paso es personalizar los correos automáticos con el diseño de tu marca.</p>
+                    <div class="evo-metric">MÉTRICA: Ingresos recuperados/mes</div>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">06 / 08</span>
+    </section>
+
+    <!-- SLIDE 7: PRÓXIMOS PASOS DETALLADOS -->
+    <section class="slide" id="slide-6">
+        <div class="slide-inner">
+            <h3>Hoja de Ruta Operativa</h3>
+            <h2>Próximos Pasos y Orientación Específica</h2>
+            <div class="divider"></div>
+            <div class="security-grid">
+                <div class="security-card" style="border-left: 4px solid var(--color-info);">
+                    <span class="security-badge" style="background: #eff6ff; color: var(--color-info);">1. SEGURIDAD ACCESO</span>
+                    <h4 style="margin-top: 0.5rem; font-weight: 700;">Activar WP 2FA</h4>
+                    <p>Instalar el plugin gratuito <strong>WP 2FA</strong>. Configura la autenticación obligatoria en dos pasos para Administradores y Gestores. Protege el sitio de ataques de fuerza bruta requiriendo un código móvil temporal desde Google Authenticator.</p>
+                </div>
+                <div class="security-card" style="border-left: 4px solid var(--color-info);">
+                    <span class="security-badge" style="background: #eff6ff; color: var(--color-info);">2. OPTIMIZACIÓN</span>
+                    <h4 style="margin-top: 0.5rem; font-weight: 700;">Definir Estado de YayMail</h4>
+                    <p>Decidir si personalizar las 19 plantillas de correos inactivas en <strong>YayMail → Email Templates</strong> o desactivar el plugin. Tenerlo activo sin usar consume recursos del servidor en cada compra sin aportar valor visual.</p>
+                </div>
+                <div class="security-card" style="border-left: 4px solid var(--color-info);">
+                    <span class="security-badge" style="background: #eff6ff; color: var(--color-info);">3. SEGURIDAD DNS</span>
+                    <h4 style="margin-top: 0.5rem; font-weight: 700;">Escalar Registro DMARC</h4>
+                    <p>Tras 4 semanas de envíos estables con Brevo, cambia el registro DNS DMARC en tu panel de Hostinger de <code>p=none</code> a <code>p=quarantine</code>. Bloqueará eficazmente cualquier correo fraudulento que intente suplantar tu dominio.</p>
+                </div>
+                <div class="security-card" style="border-left: 4px solid var(--color-info);">
+                    <span class="security-badge" style="background: #eff6ff; color: var(--color-info);">4. BLINDAJE SERVER</span>
+                    <h4 style="margin-top: 0.5rem; font-weight: 700;">Cabeceras HTTP en .htaccess</h4>
+                    <p>Insertar reglas de protección HTTP (HSTS, CSP y X-Frame-Options) en el archivo <code>.htaccess</code>. Esto blindará la experiencia de tus clientes evitando secuestros de clics (clickjacking) o inyección de scripts externos.</p>
+                </div>
+                <div class="security-card" style="border-left: 4px solid var(--color-info);">
+                    <span class="security-badge" style="background: #eff6ff; color: var(--color-info);">5. PREVENCIÓN</span>
+                    <h4 style="margin-top: 0.5rem; font-weight: 700;">Simular Copia de Seguridad</h4>
+                    <p>Programar una simulación mensual en Hostinger. Consiste en restaurar el backup automático más reciente en un subdominio o base de datos de pruebas para validar la integridad absoluta del sistema de prevención ante caídas.</p>
+                </div>
+                <div class="security-card" style="border-left: 4px solid var(--color-info);">
+                    <span class="security-badge" style="background: #eff6ff; color: var(--color-info);">6. QA FINAL</span>
+                    <h4 style="margin-top: 0.5rem; font-weight: 700;">Compra Real de Validación</h4>
+                    <p>Ejecutar un pedido real de bajo costo con Wompi para asegurar que la conexión de producción responde, la pasarela descuenta correctamente y se dispara el correo de confirmación de Brevo sin retrasos.</p>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">07 / 08</span>
+    </section>
+
+    <!-- SLIDE 8: CTA CIERRE -->
+    <section class="slide" id="slide-7">
+        <div class="slide-inner">
+            <h3>Siguiente Paso</h3>
+            <h2>Tu tienda está lista para crecer</h2>
+            <div class="divider"></div>
+            <div class="cta-box">
+                <h2>Fase 2: Crecimiento</h2>
+                <p>Con la base técnica sólida y segura, el siguiente paso es convertir más visitantes en compradores. Rediseño de la experiencia de compra, velocidad premium y analítica avanzada.</p>
+                <a href="mailto:jordanmarles@gmail.com" class="cta-btn" id="cta-contact">Agenda una reunión →</a>
+                <p class="cta-note">Disponibilidad inmediata · Sin compromiso</p>
+            </div>
+
+            <div class="bottom-grid">
+                <div class="bottom-card">
+                    <div class="bc-title">Alcance</div>
+                    <div class="bc-label">Rediseño UX + Velocidad + Analytics avanzado</div>
+                </div>
+                <div class="bottom-card">
+                    <div class="bc-title">Inversión</div>
+                    <div class="bc-label">A definir según prioridades de Laura</div>
+                </div>
+                <div class="bottom-card">
+                    <div class="bc-title">ROI</div>
+                    <div class="bc-label">Calculable con 4 semanas de datos de GA4</div>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">08 / 08</span>
+    </section>
+
+    <script>
+        // ── Navigation dots & header toggle ──
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+
+        function scrollToSlide(index) {
+            slides[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ── Observer for navigation dots ──
+        // 📚 LEARN: IntersectionObserver se usa para detectar qué sección está en pantalla de forma eficiente sin sobrecargar la CPU del navegador.
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(slides).indexOf(entry.target);
+                    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                    
+                    // Modificamos dinámicamente la clase del body para controlar transiciones de visibilidad de logo u otros elementos
+                    document.body.className = `slide-active-${index}`;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+
+        // ── Animated counters ──
+        // 🚧 SIMPLIFIED: Animación progresiva de números mediante un temporizador de intervalo en JavaScript.
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                if (counter.dataset.animated) return;
+                const target = parseInt(counter.dataset.count);
+                const suffix = counter.dataset.suffix || '';
+                const isStatic = counter.dataset.static === 'true';
+
+                if (isStatic) {
+                    counter.textContent = target + suffix;
+                    counter.dataset.animated = 'true';
+                    return;
+                }
+
+                const duration = 1500;
+                const step = Math.max(1, Math.floor(target / 60));
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = (target > 0 ? '-' : '') + current + suffix;
+                }, duration / (target / step));
+
+                counter.dataset.animated = 'true';
+            });
+        }
+
+        // Trigger counters when slide 2 is visible
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const metricsSlide = document.getElementById('slide-1');
+        if (metricsSlide) counterObserver.observe(metricsSlide);
+
+        // ── Confetti ──
+        function createConfetti() {
+            const container = document.getElementById('confetti-box');
+            if (!container) return;
+            const colors = ['#F2C71B', '#fcd34d', '#15803d', '#1d4ed8', '#d97706', '#b91c1c'];
+
+            for (let i = 0; i < 40; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.animationDuration = (3 + Math.random() * 3) + 's';
+                confetti.style.width = (5 + Math.random() * 8) + 'px';
+                confetti.style.height = (5 + Math.random() * 8) + 'px';
+                container.appendChild(confetti);
+            }
+        }
+        createConfetti();
+    </script>
+</body>
+</html>
