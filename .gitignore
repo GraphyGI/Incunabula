@@ -1,0 +1,31 @@
+# // ✅ BEST PRACTICE: Ignorar archivos binarios pesados, logs de depuración y archivos temporales para mantener un repositorio limpio y liviano.
+
+# WordPress Debug Logs (pueden ser gigantescos)
+*.log
+wp-content/*.log
+
+# Instaladores de temas y plugins (no deben estar en el repositorio)
+*.zip
+*.tar.gz
+
+# Archivos multimedia pesados (videos y audios de reuniones)
+*.mp4
+*.mp3
+*.wav
+
+# Archivos temporales e integración de Google Drive
+*.gdoc
+*.gsheet
+
+# Capturas de pantalla pesadas e imágenes temporales en la raíz
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Excluir específicamente la carpeta Screenshots antes ya que contiene logs de 500MB
+Screenshots antes/
+
+# Permitir imágenes específicas si estuviesen dentro de la propuesta
+!propuesta/*.png
+!propuesta/*.jpg
