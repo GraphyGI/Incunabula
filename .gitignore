@@ -1,6 +1,9 @@
 # ✅ BEST PRACTICE: Solo se rastrean archivos web en este repositorio.
 # Los documentos de trabajo, reportes y archivos de análisis se mantienen localmente (Google Drive).
 
+# ─── CARPETA DE PROPUESTA (solo web estática de cierre en este repo) ───────────
+propuesta/
+
 # ─── BINARIOS Y ARCHIVOS PESADOS ───────────────────────────────────────────────
 *.zip
 *.tar.gz
