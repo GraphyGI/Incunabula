@@ -467,8 +467,13 @@
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--radius);
-            padding: 2rem;
             box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .ba-content {
+            padding: 1.5rem 2rem;
         }
         .ba-col h4 {
             font-size: 0.85rem;
@@ -695,22 +700,22 @@
             100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
         }
 
-        /* ── IMAGE ZOOM MODAL ──────────────────────── */
+        /* ── IMAGE ZOOM HOVER ──────────────────────── */
         .img-zoom-wrapper {
             position: relative;
             display: block;
-            border-radius: 8px;
             overflow: hidden;
-            cursor: zoom-in;
-            border: 1px solid var(--color-border);
-            margin-bottom: 1.25rem;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
             background: var(--color-bg);
+            text-decoration: none;
         }
         .img-zoom-wrapper img {
             width: 100%;
             display: block;
             aspect-ratio: 16/9;
             object-fit: cover;
+            object-position: top; /* Asegura ver la parte superior del escritorio */
             transition: transform 0.5s ease;
         }
         .img-zoom-wrapper:hover img {
@@ -719,7 +724,7 @@
         .img-zoom-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(36, 36, 36, 0.3);
+            background: rgba(36, 36, 36, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -739,67 +744,6 @@
         }
         .img-zoom-wrapper:hover .img-zoom-overlay svg {
             transform: scale(1);
-        }
-
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 15, 15, 0.95);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .modal-content {
-            position: relative;
-            width: 90vw;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-            transform: scale(0.96) translateY(20px);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .modal-overlay.active .modal-content {
-            transform: scale(1) translateY(0);
-        }
-        .modal-content img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-        .modal-close {
-            position: absolute;
-            top: 25px;
-            right: 30px;
-            color: white;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            z-index: 10000;
-        }
-        .modal-close:hover {
-            background: rgba(255,255,255,0.25);
-            transform: scale(1.05);
         }
 
         /* ── RESPONSIVE ───────────────────────────── */
@@ -1043,35 +987,43 @@
             <p style="color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem;">De un entorno vulnerable a un ecosistema robusto, listo para escalar contigo.</p>
             <div class="ba-grid">
                 <div class="ba-col before">
-                    <h4><i data-lucide="x-circle" style="width: 16px; height: 16px; vertical-align: middle;"></i> El escenario anterior</h4>
-                    <!-- // ✅ BEST PRACTICE: Visor interactivo para detallar el Antes -->
-                    <div class="img-zoom-wrapper" onclick="openModal('./assets/escritorio-antes.jpg')">
-                        <img src="./assets/escritorio-antes.jpg" alt="Captura del Antes">
-                        <div class="img-zoom-overlay"><i data-lucide="maximize-2"></i></div>
+                    <div class="ba-content" style="padding-bottom: 1rem;">
+                        <h4><i data-lucide="x-circle" style="width: 16px; height: 16px; vertical-align: middle;"></i> El escenario anterior</h4>
                     </div>
-                    <div class="ba-item">🔴 Ecosistema técnico sobrecargado</div>
-                    <div class="ba-item">🔴 Fricciones constantes en el sistema</div>
-                    <div class="ba-item">🔴 Pérdida de ventas por pasarela inestable</div>
-                    <div class="ba-item">🔴 Comunicación con clientes interrumpida</div>
-                    <div class="ba-item">🔴 Contenido de prueba visible para el público</div>
-                    <div class="ba-item">🔴 Herramientas sin licencias oficiales</div>
-                    <div class="ba-item">🔴 Múltiples vulnerabilidades activas</div>
+                    <!-- // ✅ BEST PRACTICE: Visor interactivo ancho completo -->
+                    <a href="./assets/escritorio-antes.jpg" target="_blank" class="img-zoom-wrapper" title="Abrir imagen completa">
+                        <img src="./assets/escritorio-antes.jpg" alt="Captura del Antes">
+                        <div class="img-zoom-overlay"><i data-lucide="external-link"></i></div>
+                    </a>
+                    <div class="ba-content" style="padding-top: 1rem;">
+                        <div class="ba-item">🔴 Ecosistema técnico sobrecargado</div>
+                        <div class="ba-item">🔴 Fricciones constantes en el sistema</div>
+                        <div class="ba-item">🔴 Pérdida de ventas por pasarela inestable</div>
+                        <div class="ba-item">🔴 Comunicación con clientes interrumpida</div>
+                        <div class="ba-item">🔴 Contenido de prueba visible para el público</div>
+                        <div class="ba-item">🔴 Herramientas sin licencias oficiales</div>
+                        <div class="ba-item">🔴 Múltiples vulnerabilidades activas</div>
+                    </div>
                 </div>
                 <div class="ba-arrow"><i data-lucide="arrow-right"></i></div>
                 <div class="ba-col after">
-                    <h4><i data-lucide="check-circle-2" style="width: 16px; height: 16px; vertical-align: middle;"></i> Tu plataforma actual</h4>
-                    <!-- // ✅ BEST PRACTICE: Visor interactivo para detallar el Después -->
-                    <div class="img-zoom-wrapper" onclick="openModal('./assets/escritorio-despues.png')">
-                        <img src="./assets/escritorio-despues.png" alt="Captura del Después">
-                        <div class="img-zoom-overlay"><i data-lucide="maximize-2"></i></div>
+                    <div class="ba-content" style="padding-bottom: 1rem;">
+                        <h4><i data-lucide="check-circle-2" style="width: 16px; height: 16px; vertical-align: middle;"></i> Tu plataforma actual</h4>
                     </div>
-                    <div class="ba-item">🟢 Herramientas esenciales, legales y ágiles</div>
-                    <div class="ba-item">🟢 Operación fluida y sin alertas de error</div>
-                    <div class="ba-item">🟢 Transacciones 100% seguras y estables</div>
-                    <div class="ba-item">🟢 Correos profesionales verificados (Brevo)</div>
-                    <div class="ba-item">🟢 Contenido auténtico que genera confianza</div>
-                    <div class="ba-item">🟢 Buscador oficial de alto rendimiento</div>
-                    <div class="ba-item">🟢 Entorno seguro, auditado y blindado</div>
+                    <!-- // ✅ BEST PRACTICE: Visor interactivo ancho completo -->
+                    <a href="./assets/escritorio-despues.png" target="_blank" class="img-zoom-wrapper" title="Abrir imagen completa">
+                        <img src="./assets/escritorio-despues.png" alt="Captura del Después">
+                        <div class="img-zoom-overlay"><i data-lucide="external-link"></i></div>
+                    </a>
+                    <div class="ba-content" style="padding-top: 1rem;">
+                        <div class="ba-item">🟢 Herramientas esenciales, legales y ágiles</div>
+                        <div class="ba-item">🟢 Operación fluida y sin alertas de error</div>
+                        <div class="ba-item">🟢 Transacciones 100% seguras y estables</div>
+                        <div class="ba-item">🟢 Correos profesionales verificados (Brevo)</div>
+                        <div class="ba-item">🟢 Contenido auténtico que genera confianza</div>
+                        <div class="ba-item">🟢 Buscador oficial de alto rendimiento</div>
+                        <div class="ba-item">🟢 Entorno seguro, auditado y blindado</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1229,32 +1181,7 @@
         <span class="slide-number">09 / 09</span>
     </section>
 
-    <!-- MODAL DE IMÁGENES -->
-    <div class="modal-overlay" id="imageModal" onclick="closeModal(event)">
-        <button class="modal-close" onclick="closeModal(event)" aria-label="Cerrar imagen"><i data-lucide="x"></i></button>
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="Vista ampliada">
-        </div>
-    </div>
-
     <script>
-        // ── Modal de Imágenes ──
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-
-        function openModal(src) {
-            modalImg.src = src;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Evita scroll de fondo
-        }
-
-        function closeModal(e) {
-            // Cierra si se hace clic fuera de la imagen o en el botón cerrar
-            if (e.target.closest('.modal-content') && !e.target.closest('.modal-close')) return;
-            modal.classList.remove('active');
-            setTimeout(() => modalImg.src = '', 400); // Limpia src tras animación
-            document.body.style.overflow = '';
-        }
 
         // ── Navigation dots & header toggle ──
         const slides = document.querySelectorAll('.slide');
