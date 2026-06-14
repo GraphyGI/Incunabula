@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- // 📚 LEARN: Importamos la fuente 'Sora' desde Google Fonts para mantener la identidad tipográfica real de la web de Incunabula -->
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- // 📚 LEARN: Añadimos Lucide Icons para usar iconografía SVG profesional en lugar de emojis básicos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* ── DESIGN TOKENS ────────────────────────── */
         /* // ✅ BEST PRACTICE: Uso de variables CSS para mantener una paleta de colores centralizada y coherente con el branding de la marca */
@@ -160,6 +162,7 @@
         .slide-inner {
             max-width: 1000px;
             width: 100%;
+            text-align: left; /* ✅ BEST PRACTICE: Alineación a la izquierda unificada para estilo editorial y legibilidad */
         }
         .slide-number {
             position: absolute;
@@ -379,16 +382,13 @@
             display: flex;
             align-items: flex-start;
             gap: 1.5rem;
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            padding: 1.75rem 2rem;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--color-border);
+            transition: transform 0.2s ease;
         }
+        .problem-card:last-child { border-bottom: none; }
         .problem-card:hover {
             transform: translateX(8px);
-            box-shadow: var(--shadow);
         }
         .problem-icon {
             width: 56px;
@@ -426,15 +426,15 @@
             margin-top: 2rem;
         }
         .security-card {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            padding: 1.75rem;
-            box-shadow: var(--shadow-sm);
+            padding: 1.25rem;
+            border-left: 2px solid var(--color-border);
+            transition: border-color 0.3s ease;
         }
         .security-card.resolved { border-left: 4px solid var(--color-success); }
         .security-badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -522,7 +522,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             margin-bottom: 1.25rem;
         }
         /* Colores unificados e inspirados en pasos a seguir (azul/tecnología y crecimiento) */
@@ -767,7 +766,7 @@
     <!-- SLIDE 1: HERO / PORTADA -->
     <section class="slide slide-hero" id="slide-0">
         <div class="confetti-container" id="confetti-box"></div>
-        <div class="slide-inner">
+        <div class="slide-inner" style="text-align: center;">
             <!-- // ✅ BEST PRACTICE: Contenedor blanco (hero-card) para integrar el logo con fondo blanco sin parches visuales -->
             <div class="hero-card">
                 <!-- Logo oficial de la marca -->
@@ -846,35 +845,35 @@
             <div class="divider"></div>
             <div class="problems-list">
                 <div class="problem-card">
-                    <div class="problem-icon pay">💳</div>
+                    <div class="problem-icon pay"><i data-lucide="credit-card"></i></div>
                     <div class="problem-content">
                         <h4>Tus clientes completan sus compras sin frustraciones</h4>
                         <p>Hemos estabilizado la pasarela de pagos (Wompi). Olvídate de los carritos abandonados por fallas técnicas en el último paso; ahora cada transacción fluye naturalmente.</p>
                     </div>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon mail">📧</div>
+                    <div class="problem-icon mail"><i data-lucide="mail"></i></div>
                     <div class="problem-content">
                         <h4>Tus correos de confirmación llegan impecables</h4>
                         <p>Ya no hay mensajes rotos ni correos perdidos en la carpeta de spam. Implementamos un sistema profesional (Brevo) para que tu comunicación refleje el profesionalismo de tu marca.</p>
                     </div>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon shield">🔒</div>
+                    <div class="problem-icon shield"><i data-lucide="shield-check"></i></div>
                     <div class="problem-content">
                         <h4>Un entorno de trabajo seguro y confiable</h4>
                         <p>Hemos erradicado cualquier rastro de software dudoso o vulnerable. Tu tienda opera exclusivamente con herramientas legítimas, protegiendo tu inversión y la privacidad de tus clientes.</p>
                     </div>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon db">🗄️</div>
+                    <div class="problem-icon db"><i data-lucide="database"></i></div>
                     <div class="problem-content">
                         <h4>Un catálogo que responde con agilidad</h4>
                         <p>Limpiamos a fondo el sistema, eliminando miles de registros innecesarios. Ahora tu tienda es más ligera, haciendo que tus visitantes naveguen y descubran libros mucho más rápido.</p>
                     </div>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon filter">🔍</div>
+                    <div class="problem-icon filter"><i data-lucide="search"></i></div>
                     <div class="problem-content">
                         <h4>Tus lectores encuentran el libro que buscan al instante</h4>
                         <p>Reconstruimos la experiencia de búsqueda y filtrado de forma nativa y robusta. Buscar por autor, género o precio vuelve a ser una experiencia grata para tus visitantes.</p>
@@ -891,7 +890,7 @@
             <h3>Blindaje Digital</h3>
             <h2>Protegiendo el prestigio de tu marca</h2>
             <div class="divider"></div>
-            <p style="text-align:center; color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem; max-width: 600px; margin-left:auto; margin-right:auto;">Más allá de la tecnología, hemos asegurado la confianza de tus lectores y la privacidad de su información.</p>
+            <p style="color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem; max-width: 600px;">Más allá de la tecnología, hemos asegurado la confianza de tus lectores y la privacidad de su información.</p>
             <div class="security-grid">
                 <div class="security-card resolved">
                     <span class="security-badge resolved-badge">✓ Protegido</span>
@@ -934,10 +933,12 @@
             <h3>Crecimiento Tangible</h3>
             <h2>La evolución de tu plataforma</h2>
             <div class="divider"></div>
-            <p style="text-align:center; color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem;">De un entorno vulnerable a un ecosistema robusto, listo para escalar contigo.</p>
+            <p style="color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem;">De un entorno vulnerable a un ecosistema robusto, listo para escalar contigo.</p>
             <div class="ba-grid">
                 <div class="ba-col before">
-                    <h4>❌ El escenario anterior</h4>
+                    <h4><i data-lucide="x-circle" style="width: 16px; height: 16px; vertical-align: middle;"></i> El escenario anterior</h4>
+                    <!-- // ✅ BEST PRACTICE: Uso de imagen comparativa del Antes -->
+                    <img src="./Screenshots antes/Escritorio-Incunabula-—-WordPress-05-30-2026_10_04_AM.jpg" alt="Captura del Antes" style="width:100%; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--color-border); aspect-ratio: 16/9; object-fit: cover;">
                     <div class="ba-item">🔴 Ecosistema técnico sobrecargado</div>
                     <div class="ba-item">🔴 Fricciones constantes en el sistema</div>
                     <div class="ba-item">🔴 Pérdida de ventas por pasarela inestable</div>
@@ -946,9 +947,11 @@
                     <div class="ba-item">🔴 Herramientas sin licencias oficiales</div>
                     <div class="ba-item">🔴 Múltiples vulnerabilidades activas</div>
                 </div>
-                <div class="ba-arrow">→</div>
+                <div class="ba-arrow"><i data-lucide="arrow-right"></i></div>
                 <div class="ba-col after">
-                    <h4>✅ Tu plataforma actual</h4>
+                    <h4><i data-lucide="check-circle-2" style="width: 16px; height: 16px; vertical-align: middle;"></i> Tu plataforma actual</h4>
+                    <!-- // 🚧 SIMPLIFIED: Placeholder para la imagen del Después -->
+                    <img src="[PANTALLAZO DESPUÉS AÑADIR]" alt="Captura del Después" style="width:100%; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--color-border); background: #f0f0f0; aspect-ratio: 16/9; object-fit: cover; display:block;">
                     <div class="ba-item">🟢 Herramientas esenciales, legales y ágiles</div>
                     <div class="ba-item">🟢 Operación fluida y sin alertas de error</div>
                     <div class="ba-item">🟢 Transacciones 100% seguras y estables</div>
@@ -968,7 +971,7 @@
             <h3>Rendimiento y Velocidad</h3>
             <h2>El impacto en los tiempos de carga</h2>
             <div class="divider"></div>
-            <p style="text-align:center; color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem;">Comparativa de rendimiento en móviles (PageSpeed Insights).</p>
+            <p style="color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem;">Comparativa de rendimiento en móviles (PageSpeed Insights).</p>
             
             <div class="ba-grid">
                 <div class="ba-col before">
@@ -1003,25 +1006,25 @@
             <div class="divider"></div>
             <div class="evo-grid">
                 <div class="evo-card">
-                    <div class="evo-icon i-chart">📊</div>
+                    <div class="evo-icon i-chart"><i data-lucide="bar-chart-2"></i></div>
                     <h4>Crecimiento Orgánico</h4>
                     <p>Con Google Analytics activo, ahora puedes ver de dónde vienen tus clientes y qué buscan. Esto te permite invertir mejor en publicidad.</p>
                     <div class="evo-metric">MÉTRICA: Tráfico orgánico mensual</div>
                 </div>
                 <div class="evo-card">
-                    <div class="evo-icon i-cart">🛒</div>
+                    <div class="evo-icon i-cart"><i data-lucide="shopping-cart"></i></div>
                     <h4>Optimización de Conversión</h4>
                     <p>Rediseñar la página de cada libro con un botón "Comprar Ahora" visible, reseñas de clientes y sellos de confianza puede aumentar las ventas.</p>
                     <div class="evo-metric">ESTIMADO: +25-45% más ventas por visita</div>
                 </div>
                 <div class="evo-card">
-                    <div class="evo-icon i-bolt">⚡</div>
+                    <div class="evo-icon i-bolt"><i data-lucide="zap"></i></div>
                     <h4>Velocidad Premium</h4>
                     <p>Reemplazar el diseño actual por uno más liviano eliminaría ~200KB de código innecesario por página. Tu tienda cargaría casi al instante.</p>
                     <div class="evo-metric">META: TTFB de 2.7s → menos de 0.8s</div>
                 </div>
                 <div class="evo-card">
-                    <div class="evo-icon i-robot">🤖</div>
+                    <div class="evo-icon i-robot"><i data-lucide="bot"></i></div>
                     <h4>Automatización de Ventas</h4>
                     <p>Ya tienes recuperación de carritos abandonados activa. El siguiente paso es personalizar los correos automáticos con el diseño de tu marca.</p>
                     <div class="evo-metric">MÉTRICA: Ingresos recuperados/mes</div>
@@ -1087,25 +1090,25 @@
 
             <div class="evo-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 3rem; gap: 1.5rem;">
                 <div class="evo-card" style="border-top: 4px solid var(--color-accent-dark); padding: 2rem 1.5rem;">
-                    <div class="evo-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a); color: var(--color-accent-dark);">👑</div>
+                    <div class="evo-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a); color: var(--color-accent-dark);"><i data-lucide="crown"></i></div>
                     <h4 style="font-size: 1.1rem;">Identidad Visual Premium</h4>
                     <p style="font-size: 0.9rem;">Una librería independiente no compite por precio, compite por aura y curaduría. Crearemos un entorno visual (tipografías editoriales, paletas sobrias) que haga sentir a cada visitante el prestigio de tu marca desde el primer segundo.</p>
                 </div>
                 <div class="evo-card" style="border-top: 4px solid var(--color-success); padding: 2rem 1.5rem;">
-                    <div class="evo-icon" style="background: linear-gradient(135deg, #dcfce7, #86efac); color: var(--color-success);">💎</div>
+                    <div class="evo-icon" style="background: linear-gradient(135deg, #dcfce7, #86efac); color: var(--color-success);"><i data-lucide="gem"></i></div>
                     <h4 style="font-size: 1.1rem;">Experiencia de Lectura y Compra (UX)</h4>
                     <p style="font-size: 0.9rem;">Haremos que explorar tu catálogo sea un placer intuitivo. Diseñaremos fichas de producto que inviten a leer, recomendaciones inteligentes y un proceso de pago tan fluido que se sienta completamente natural y seguro.</p>
                 </div>
                 <div class="evo-card" style="border-top: 4px solid var(--color-info); padding: 2rem 1.5rem;">
-                    <div class="evo-icon" style="background: linear-gradient(135deg, #eff6ff, #bfdbfe); color: var(--color-info);">🧠</div>
+                    <div class="evo-icon" style="background: linear-gradient(135deg, #eff6ff, #bfdbfe); color: var(--color-info);"><i data-lucide="brain"></i></div>
                     <h4 style="font-size: 1.1rem;">Conexión con tus Lectores (CRO)</h4>
                     <p style="font-size: 0.9rem;">Usaremos datos para entender qué géneros atrapan más a tus lectores. Diseñaremos estrategias de comunicación y retención que conviertan a compradores ocasionales en clientes apasionados y fieles a tu librería.</p>
                 </div>
             </div>
 
-            <div class="cta-box" style="margin-top: 0; padding: 3.5rem 2rem;">
+            <div class="cta-box" style="margin-top: 0; padding: 3.5rem 2rem; text-align: left;">
                 <h2 style="font-size: 1.9rem; margin-bottom: 0.75rem;">Hablemos del futuro de tu marca</h2>
-                <p style="font-size: 1.05rem; margin-bottom: 2rem; max-width: 650px; margin-left: auto; margin-right: auto;">Te invito a explorar esta próxima etapa con total tranquilidad. Sentémonos a proyectar el crecimiento sostenido de Incunabula.</p>
+                <p style="font-size: 1.05rem; margin-bottom: 2rem; max-width: 650px;">Te invito a explorar esta próxima etapa con total tranquilidad. Sentémonos a proyectar el crecimiento sostenido de Incunabula.</p>
                 <a href="mailto:jordanmarles@gmail.com" class="cta-btn" id="cta-contact" style="font-size: 1.1rem; padding: 1.1rem 3rem;">Tomar un café virtual estratégico →</a>
                 <p class="cta-note" style="margin-top: 1.25rem; font-weight: 600; color: #4a473f;">Sin compromiso · Orientación estratégica enfocada en tu crecimiento</p>
             </div>
@@ -1202,6 +1205,8 @@
             }
         }
         createConfetti();
+        // Inicializar Lucide Icons
+        lucide.createIcons();
     </script>
 </body>
 </html>
