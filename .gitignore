@@ -1,47 +1,52 @@
-# // ✅ BEST PRACTICE: Ignorar archivos binarios pesados, logs de depuración y archivos temporales para mantener un repositorio limpio y liviano.
+# ✅ BEST PRACTICE: Solo se rastrean archivos web en este repositorio.
+# Los documentos de trabajo, reportes y archivos de análisis se mantienen localmente (Google Drive).
 
-# WordPress Debug Logs (pueden ser gigantescos)
-*.log
-wp-content/*.log
-
-# Instaladores de temas y plugins (no deben estar en el repositorio)
+# ─── BINARIOS Y ARCHIVOS PESADOS ───────────────────────────────────────────────
 *.zip
 *.tar.gz
-
-# Archivos multimedia pesados (videos y audios de reuniones)
 *.mp4
 *.mp3
 *.wav
+*.log
+wp-content/*.log
 
-# Archivos temporales e integración de Google Drive
-*.gdoc
-*.gsheet
-
-# Capturas de pantalla pesadas e imágenes temporales en la raíz
+# ─── IMÁGENES (no son parte del código web) ────────────────────────────────────
 *.png
 *.jpg
 *.jpeg
 *.gif
+*.webp
 
-# Excluir específicamente la carpeta Screenshots antes ya que contiene logs de 500MB
-Screenshots antes/
+# ─── GOOGLE DRIVE ──────────────────────────────────────────────────────────────
+*.gdoc
+*.gsheet
+*.gslides
 
-# Permitir imágenes específicas si estuviesen dentro de la propuesta
-!propuesta/*.png
-!propuesta/*.jpg
-
-# // ✅ BEST PRACTICE: Ignorar reportes, PDFs, archivos Markdown y directorios de diagnóstico locales en el repo
+# ─── PDFs y DATOS ──────────────────────────────────────────────────────────────
 *.pdf
 *.csv
-*.md
+*.json
+*.xlsx
+*.xls
+
+# ─── CARPETAS DE TRABAJO INTERNO (no son código web) ───────────────────────────
 auditoria_y_diagnostico/
 planes_ejecucion/
+Screenshots antes/
+
+# ─── ARCHIVOS MARKDOWN DE TRABAJO INTERNO ──────────────────────────────────────
+# (se guardan localmente en Google Drive, no en GitHub)
 cierre_proyecto/*.md
-incunabula_technical_due_diligence.html
-deep-research-report-CHATGPT.md
 Grounding final especifico.md
+deep-research-report-CHATGPT.md
 content.md
 guion_ventas.md
 propuesta_pdf.md
-!README.md # Permitir README si existiera
 
+# ─── ARCHIVOS HTML QUE NO SON LA PRESENTACIÓN WEB ─────────────────────────────
+incunabula_technical_due_diligence.html
+
+# ─── JS y CSS de la propuesta antigua (no necesarios en main) ──────────────────
+script.js
+styles.css
+rank-math-settings.json
