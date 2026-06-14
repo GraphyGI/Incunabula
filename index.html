@@ -695,6 +695,113 @@
             100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
         }
 
+        /* ── IMAGE ZOOM MODAL ──────────────────────── */
+        .img-zoom-wrapper {
+            position: relative;
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: zoom-in;
+            border: 1px solid var(--color-border);
+            margin-bottom: 1.25rem;
+            background: var(--color-bg);
+        }
+        .img-zoom-wrapper img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .img-zoom-wrapper:hover img {
+            transform: scale(1.02);
+        }
+        .img-zoom-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(36, 36, 36, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .img-zoom-wrapper:hover .img-zoom-overlay {
+            opacity: 1;
+        }
+        .img-zoom-overlay svg {
+            color: white;
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .img-zoom-wrapper:hover .img-zoom-overlay svg {
+            transform: scale(1);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 15, 15, 0.95);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            position: relative;
+            width: 90vw;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+            transform: scale(0.96) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            color: white;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10000;
+        }
+        .modal-close:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
+        }
+
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 768px) {
             .slide { padding: 2.5rem 1.25rem; }
@@ -778,7 +885,7 @@
                 </div>
                 <h1>Cimientos Sólidos para Crecer</h1>
                 <div class="divider"></div>
-                <p class="subtitle">Hemos estabilizado la tecnología y asegurado tu tienda. Ahora Incunabula opera con la tranquilidad y eficiencia que merece.</p>
+                <p class="subtitle">Hemos estabilizado el corazón de tu negocio y blindado su seguridad. Ahora tu librería digital opera con la solidez y tranquilidad operativa que tú y tus lectores merecen.</p>
                 
                 <!-- Botón de acceso al Informe de Google Docs completo en Portada -->
                 <div>
@@ -803,8 +910,8 @@
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-value green" data-count="42">0</div>
-                    <div class="metric-label">Limpieza profunda de plugins</div>
-                    <div class="metric-detail">De 59 → 34 herramientas esenciales</div>
+                    <div class="metric-label">Limpieza profunda de código</div>
+                    <div class="metric-detail">De 59 → 34 herramientas. Tu catálogo ahora fluye sin trabas.</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-value green" data-count="100" data-suffix="%">0</div>
@@ -841,14 +948,14 @@
     <section class="slide" id="slide-2">
         <div class="slide-inner">
             <h3>Problemas del Pasado</h3>
-            <h2>Situaciones que ya no interrumpirán tu día</h2>
+            <h2>Dolores técnicos que ya son historia</h2>
             <div class="divider"></div>
             <div class="problems-list">
                 <div class="problem-card">
                     <div class="problem-icon pay"><i data-lucide="credit-card"></i></div>
                     <div class="problem-content">
-                        <h4>Tus clientes completan sus compras sin frustraciones</h4>
-                        <p>Hemos estabilizado la pasarela de pagos (Wompi). Olvídate de los carritos abandonados por fallas técnicas en el último paso; ahora cada transacción fluye naturalmente.</p>
+                        <h4>Tus clientes compran sin interrupciones</h4>
+                        <p>Sabemos lo estresante que era perder ventas en el último paso. Estabilizamos Wompi para asegurar que la experiencia de pago sea impecable de principio a fin.</p>
                     </div>
                 </div>
                 <div class="problem-card">
@@ -888,9 +995,9 @@
     <section class="slide" id="slide-3">
         <div class="slide-inner">
             <h3>Blindaje Digital</h3>
-            <h2>Protegiendo el prestigio de tu marca</h2>
+            <h2>Protegiendo el prestigio de tu librería</h2>
             <div class="divider"></div>
-            <p style="color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem; max-width: 600px;">Más allá de la tecnología, hemos asegurado la confianza de tus lectores y la privacidad de su información.</p>
+            <p style="color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem; max-width: 600px;">La seguridad no es solo evitar virus; es proteger la relación de confianza que has construido con tus lectores durante años.</p>
             <div class="security-grid">
                 <div class="security-card resolved">
                     <span class="security-badge resolved-badge">✓ Protegido</span>
@@ -937,8 +1044,11 @@
             <div class="ba-grid">
                 <div class="ba-col before">
                     <h4><i data-lucide="x-circle" style="width: 16px; height: 16px; vertical-align: middle;"></i> El escenario anterior</h4>
-                    <!-- // ✅ BEST PRACTICE: Uso de imagen comparativa del Antes -->
-                    <img src="./assets/escritorio-antes.jpg" alt="Captura del Antes" style="width:100%; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--color-border); aspect-ratio: 16/9; object-fit: cover;">
+                    <!-- // ✅ BEST PRACTICE: Visor interactivo para detallar el Antes -->
+                    <div class="img-zoom-wrapper" onclick="openModal('./assets/escritorio-antes.jpg')">
+                        <img src="./assets/escritorio-antes.jpg" alt="Captura del Antes">
+                        <div class="img-zoom-overlay"><i data-lucide="maximize-2"></i></div>
+                    </div>
                     <div class="ba-item">🔴 Ecosistema técnico sobrecargado</div>
                     <div class="ba-item">🔴 Fricciones constantes en el sistema</div>
                     <div class="ba-item">🔴 Pérdida de ventas por pasarela inestable</div>
@@ -950,8 +1060,11 @@
                 <div class="ba-arrow"><i data-lucide="arrow-right"></i></div>
                 <div class="ba-col after">
                     <h4><i data-lucide="check-circle-2" style="width: 16px; height: 16px; vertical-align: middle;"></i> Tu plataforma actual</h4>
-                    <!-- // ✅ BEST PRACTICE: Uso de imagen comparativa del Después -->
-                    <img src="./assets/escritorio-despues.png" alt="Captura del Después" style="width:100%; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--color-border); aspect-ratio: 16/9; object-fit: cover; display:block;">
+                    <!-- // ✅ BEST PRACTICE: Visor interactivo para detallar el Después -->
+                    <div class="img-zoom-wrapper" onclick="openModal('./assets/escritorio-despues.png')">
+                        <img src="./assets/escritorio-despues.png" alt="Captura del Después">
+                        <div class="img-zoom-overlay"><i data-lucide="maximize-2"></i></div>
+                    </div>
                     <div class="ba-item">🟢 Herramientas esenciales, legales y ágiles</div>
                     <div class="ba-item">🟢 Operación fluida y sin alertas de error</div>
                     <div class="ba-item">🟢 Transacciones 100% seguras y estables</div>
@@ -1084,31 +1197,31 @@
             <div class="divider"></div>
             
             <div style="margin-bottom: 2.5rem; color: var(--color-text-muted); font-size: 1.1rem; line-height: 1.7; max-width: 850px;">
-                <p style="margin-bottom: 1rem;">Hemos protegido el valor de tu negocio, construyendo una base estable y segura. Sin embargo, el valor cultural y editorial de los libros que ofreces merece brillar con más fuerza.</p>
-                <p><strong>Es el momento de que la interfaz visual haga justicia a la calidad de tu catálogo.</strong> Vamos a transformar Incunabula, pasando de ser un directorio funcional a convertirse en una auténtica <strong>boutique literaria digital</strong> que inspire confianza y autoridad.</p>
+                <p style="margin-bottom: 1rem;">Hemos asegurado el motor de tu negocio, construyendo una base estable y rápida. Sin embargo, sabemos que Incunabula es más que un simple carrito de compras: es un espacio de curaduría literaria excepcional.</p>
+                <p><strong>Es el momento de que tu interfaz visual refleje verdaderamente la calidad de tu catálogo.</strong> Pasaremos de tener un directorio funcional a construir una <strong>boutique literaria digital</strong> que inspire autoridad, eleve el valor percibido de tus libros y enamore a tus lectores a primera vista.</p>
             </div>
 
             <div class="evo-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 3rem; gap: 1.5rem;">
                 <div class="evo-card" style="border-top: 4px solid var(--color-accent-dark); padding: 2rem 1.5rem;">
                     <div class="evo-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a); color: var(--color-accent-dark);"><i data-lucide="crown"></i></div>
                     <h4 style="font-size: 1.1rem;">Identidad Visual Premium</h4>
-                    <p style="font-size: 0.9rem;">Una librería independiente no compite por precio, compite por aura y curaduría. Crearemos un entorno visual (tipografías editoriales, paletas sobrias) que haga sentir a cada visitante el prestigio de tu marca desde el primer segundo.</p>
+                    <p style="font-size: 0.9rem;">Una librería independiente no compite por precio, compite por aura y curaduría. Crearemos un entorno visual a medida (tipografías editoriales, paletas sobrias) que transmita prestigio y cultura desde el primer segundo.</p>
                 </div>
                 <div class="evo-card" style="border-top: 4px solid var(--color-success); padding: 2rem 1.5rem;">
                     <div class="evo-icon" style="background: linear-gradient(135deg, #dcfce7, #86efac); color: var(--color-success);"><i data-lucide="gem"></i></div>
-                    <h4 style="font-size: 1.1rem;">Experiencia de Lectura y Compra (UX)</h4>
-                    <p style="font-size: 0.9rem;">Haremos que explorar tu catálogo sea un placer intuitivo. Diseñaremos fichas de producto que inviten a leer, recomendaciones inteligentes y un proceso de pago tan fluido que se sienta completamente natural y seguro.</p>
+                    <h4 style="font-size: 1.1rem;">Experiencia de Lectura Sensorial</h4>
+                    <p style="font-size: 0.9rem;">Haremos que explorar tu catálogo sea un placer intuitivo. Diseñaremos fichas de producto que inviten a sumergirse en la sinopsis, con un proceso de pago tan fluido que se sienta natural y elegante.</p>
                 </div>
                 <div class="evo-card" style="border-top: 4px solid var(--color-info); padding: 2rem 1.5rem;">
                     <div class="evo-icon" style="background: linear-gradient(135deg, #eff6ff, #bfdbfe); color: var(--color-info);"><i data-lucide="brain"></i></div>
-                    <h4 style="font-size: 1.1rem;">Conexión con tus Lectores (CRO)</h4>
-                    <p style="font-size: 0.9rem;">Usaremos datos para entender qué géneros atrapan más a tus lectores. Diseñaremos estrategias de comunicación y retención que conviertan a compradores ocasionales en clientes apasionados y fieles a tu librería.</p>
+                    <h4 style="font-size: 1.1rem;">Conexión Estratégica con el Lector</h4>
+                    <p style="font-size: 0.9rem;">Convertiremos las visitas en comunidad. Diseñaremos estrategias de comunicación visual que atrapen a los lectores, generando confianza inmediata y transformando compradores ocasionales en clientes fieles a tu sello.</p>
                 </div>
             </div>
 
             <div class="cta-box" style="margin-top: 0; padding: 3.5rem 2rem; text-align: left;">
-                <h2 style="font-size: 1.9rem; margin-bottom: 0.75rem;">Hablemos del futuro de tu marca</h2>
-                <p style="font-size: 1.05rem; margin-bottom: 2rem; max-width: 650px;">Te invito a explorar esta próxima etapa con total tranquilidad. Sentémonos a proyectar el crecimiento sostenido de Incunabula.</p>
+                <h2 style="font-size: 1.9rem; margin-bottom: 0.75rem;">Diseñemos el futuro de Incunabula</h2>
+                <p style="font-size: 1.05rem; margin-bottom: 2rem; max-width: 650px;">Te invito a explorar esta próxima etapa visual con la misma tranquilidad con la que resolvimos lo técnico. Sentémonos a proyectar el crecimiento estético y comercial de tu marca.</p>
                 <a href="mailto:jordanmarles@gmail.com" class="cta-btn" id="cta-contact" style="font-size: 1.1rem; padding: 1.1rem 3rem;">Tomar un café virtual estratégico →</a>
                 <p class="cta-note" style="margin-top: 1.25rem; font-weight: 600; color: #4a473f;">Sin compromiso · Orientación estratégica enfocada en tu crecimiento</p>
             </div>
@@ -1116,7 +1229,33 @@
         <span class="slide-number">09 / 09</span>
     </section>
 
+    <!-- MODAL DE IMÁGENES -->
+    <div class="modal-overlay" id="imageModal" onclick="closeModal(event)">
+        <button class="modal-close" onclick="closeModal(event)" aria-label="Cerrar imagen"><i data-lucide="x"></i></button>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Vista ampliada">
+        </div>
+    </div>
+
     <script>
+        // ── Modal de Imágenes ──
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        function openModal(src) {
+            modalImg.src = src;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evita scroll de fondo
+        }
+
+        function closeModal(e) {
+            // Cierra si se hace clic fuera de la imagen o en el botón cerrar
+            if (e.target.closest('.modal-content') && !e.target.closest('.modal-close')) return;
+            modal.classList.remove('active');
+            setTimeout(() => modalImg.src = '', 400); // Limpia src tras animación
+            document.body.style.overflow = '';
+        }
+
         // ── Navigation dots & header toggle ──
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.nav-dot');
