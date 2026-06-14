@@ -500,6 +500,78 @@
         }
         .ba-item:last-child { border-bottom: none; }
 
+        /* ── CHARTS ───────────────────────────── */
+        .chart-box {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .chart-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .chart-header i {
+            color: var(--color-accent-dark);
+        }
+        .chart-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 60px;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .chart-row:last-child {
+            margin-bottom: 0;
+        }
+        .chart-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .chart-bar-bg {
+            background: var(--color-border);
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: width 1s ease-out;
+        }
+        .chart-bar-fill.red { background: var(--color-danger); }
+        .chart-bar-fill.green { background: var(--color-success); }
+        .chart-bar-fill.orange { background: #f59e0b; }
+        .chart-value {
+            font-weight: 800;
+            font-size: 1rem;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+        @media (min-width: 768px) {
+            .charts-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+            .chart-box.full-width {
+                grid-column: span 2;
+            }
+        }
+
         /* ── EVOLUTION BLOCKS ─────────────────────── */
         .evo-grid {
             display: grid;
@@ -1038,27 +1110,63 @@
             <div class="divider"></div>
             <p style="color:var(--color-text-muted); margin-top:-0.5rem; margin-bottom: 2rem;">Comparativa de rendimiento en móviles (PageSpeed Insights).</p>
             
-            <div class="ba-grid">
-                <div class="ba-col before">
-                    <h4>❌ Rendimiento Anterior</h4>
-                    <div class="ba-item">🔴 Tiempo de carga (LCP): 7.1s</div>
-                    <div class="ba-item">🔴 Calificación General: 56 / 100</div>
-                    <div class="ba-item">🔴 TTFB: 2.6s</div>
+            <div class="charts-grid">
+                <div class="chart-box">
+                    <div class="chart-header">
+                        <i data-lucide="timer"></i>
+                        <span>Tiempo de Carga (LCP)</span>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Antes</div>
+                        <div class="chart-bar-bg"><div class="chart-bar-fill red" style="width: 71%;"></div></div>
+                        <div class="chart-value">7.1s</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Después</div>
+                        <div class="chart-bar-bg"><div class="chart-bar-fill green" style="width: 53%;"></div></div>
+                        <div class="chart-value">5.3s</div>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--color-text-muted); margin-top:1.5rem; margin-bottom:0;">* Menos tiempo es mejor. Redujimos casi 2 segundos de carga total (34% más rápido).</p>
                 </div>
-                <div class="ba-arrow">→</div>
-                <div class="ba-col after">
-                    <h4>✅ Rendimiento Actual</h4>
-                    <div class="ba-item">🟢 Tiempo de carga (LCP): 5.3s</div>
-                    <div class="ba-item">🟢 Calificación General: 70 / 100</div>
-                    <div class="ba-item">🟢 TTFB: 2.7s (Límite del tema Bookory)</div>
+
+                <div class="chart-box">
+                    <div class="chart-header">
+                        <i data-lucide="activity"></i>
+                        <span>Calificación General</span>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Antes</div>
+                        <div class="chart-bar-bg"><div class="chart-bar-fill orange" style="width: 56%;"></div></div>
+                        <div class="chart-value">56</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Después</div>
+                        <div class="chart-bar-bg"><div class="chart-bar-fill green" style="width: 70%;"></div></div>
+                        <div class="chart-value">70</div>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--color-text-muted); margin-top:1.5rem; margin-bottom:0;">* Más puntaje es mejor. Mejoramos la experiencia móvil y el SEO frente a Google.</p>
+                </div>
+
+                <div class="chart-box full-width">
+                    <div class="chart-header">
+                        <i data-lucide="server"></i>
+                        <span>Respuesta del Servidor (TTFB)</span>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Antes</div>
+                        <div class="chart-bar-bg"><div class="chart-bar-fill orange" style="width: 26%;"></div></div>
+                        <div class="chart-value">2.6s</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Después</div>
+                        <div class="chart-bar-bg"><div class="chart-bar-fill orange" style="width: 27%;"></div></div>
+                        <div class="chart-value">2.7s</div>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--color-text-muted); margin-top:1.5rem; margin-bottom:0;"><strong>Dato Técnico:</strong> La diferencia de 0.1s se debe a los nuevos escaneos de seguridad del Firewall. El límite estructural de este tiempo de respuesta proviene del código antiguo del tema <em>Bookory</em> y Elementor.</p>
                 </div>
             </div>
             
-            <div style="margin-top: 3rem; background: var(--color-bg-alt); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--color-border);">
-                <p style="margin:0; font-size: 0.95rem; color: var(--color-text); text-align:center;">
-                    <strong>Dato clave:</strong> A pesar de las limitaciones estructurales del tema actual, la optimización profunda del servidor logró aumentar la calificación global y acelerar la carga en casi 2 segundos.
-                </p>
-            </div>
+
         </div>
         <span class="slide-number">06 / 09</span>
     </section>
