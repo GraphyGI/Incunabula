@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+/* ✅ BEST PRACTICE: Design tokens centralizados como variables CSS */
+:root {
+  /* Paleta — Inspirada en libros antiguos y clásicos */
+  --color-bg: #F9F6F0; /* Crema más claro */
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F3EFE6;
+  --color-primary: #4A3123; /* Marrón cuero oscuro */
+  --color-primary-light: #6E4B39; /* Marrón medio */
+  --color-primary-muted: #EFE8E1; /* Fondo marrón muy suave */
+  --color-accent: #B85B14; /* Ámbar literario */
+  --color-accent-light: #FDF3E1;
+  --color-text: #2C241E; /* Casi negro/marrón muy oscuro */
+  --color-text-secondary: #5C5248;
+  --color-text-muted: #A39B93;
+  --color-border: #E8E2D9;
+  --color-danger: #C83532;
+  --color-danger-light: #FDF2F2;
+
+  /* Tipografía */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.07);
+  --shadow-md: 0 4px 12px 0 rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.08);
+  --shadow-lg: 0 10px 30px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Radios */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+/* Reset y base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tipografía global */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Utilidades de animación */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes progressBar {
+  from { width: 0%; }
+  to { width: var(--target-width); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Clase para logos negros sobre fondos oscuros: invierte colores para obtener blanco */
+.logo-dark-bg {
+  filter: brightness(0) invert(1);
+}
+
+/* Logo en fondo claro: muestra en color original */
+.logo-light-bg {
+  filter: none;
+}
+
+/* Card hover para libros del prototipo */
+.book-card:hover .book-card-overlay {
+  opacity: 1 !important;
+}
+
+.book-card:hover .book-card-image {
+  transform: scale(1.04);
+}
+
+.book-card-image {
+  transition: transform 0.4s ease;
+}
+
+.book-card-overlay {
+  transition: opacity 0.3s ease;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-countUp {
+  animation: countUp 0.5s ease-out forwards;
+}
+
+/* Clases de componentes reutilizables */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.card-danger {
+  background: var(--color-danger-light);
+  border-color: #FECACA;
+}
+
+.card-success {
+  background: var(--color-primary-muted);
+  border-color: #C6DBA8;
+}
+
+.card-accent {
+  background: var(--color-accent-light);
+  border-color: #FDE68A;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(45 80 22 / 0.3);
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-accent:hover {
+  background: #92400E;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(180 83 9 / 0.3);
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.badge-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+  border: 1px solid #FECACA;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-primary-muted);
+  color: var(--color-primary);
+  border: 1px solid #C6DBA8;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border: 1px solid #FDE68A;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Separador decorativo */
+.divider {
+  width: 48px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 999px;
+  margin: 1rem 0;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 999px;
+}
