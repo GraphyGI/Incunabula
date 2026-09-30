@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Diseño — Incunabula</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* =============================================
+       SISTEMA DE TOKENS — VERSIÓN A: Tinta y Pergamino
+    ============================================= */
+    :root,
+    [data-version="a"] {
+      --color-primary: #111111;
+      --color-bg: #F5F3EE;
+      --color-bg-alt: #ECEAE4;
+      --color-accent: #B22222;
+      --color-accent-hover: #8B1A1A;
+      --color-text-secondary: #3D3D3D;
+      --color-border: #D8D8D4;
+      --color-success: #3A6B35;
+      --color-surface: #FFFFFF;
+
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-weight-heading: 700;
+
+      --version-name: "Versión A — Tinta y Pergamino";
+      --version-subtitle: "Taschen · Cálida · Editorial";
+
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 32px;
+      --space-xl: 48px;
+      --space-2xl: 80px;
+
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-pill: 99px;
+
+      --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.07);
+      --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.13);
+      --shadow-accent: 0 4px 16px rgba(178, 34, 34, 0.22);
+
+      --transition: 220ms ease-in-out;
+    }
+
+    /* =============================================
+       SISTEMA DE TOKENS — VERSIÓN B: Vanguardia & Neón
+    ============================================= */
+    [data-version="b"] {
+      --color-primary: #111111;
+      --color-bg: #F0ECE6;
+      --color-bg-alt: #E3DFD9;
+      --color-accent: #E35D29;
+      --color-accent-hover: #D05220;
+      --color-accent-warm: #E35D29;
+      --color-text-secondary: #555555;
+      --color-border: #CFCBC5;
+      --color-success: #059669;
+      --color-surface: #FFFFFF;
+
+      --font-heading: 'Bricolage Grotesque', system-ui, sans-serif;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+      --font-weight-heading: 800;
+
+      --version-name: "Versión B — Vanguardia & Neón";
+      --version-subtitle: "Brutalismo · 70-20-10 · Hyper-Actual";
+
+      --shadow-accent: 0 4px 16px rgba(255, 62, 0, 0.3);
+    }
+
+    /* =============================================
+       RESET Y BASE
+    ============================================= */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    .hover-lift {
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: var(--shadow-hover) !important;
+    }
+
+    /* =============================================
+       LAYOUT
+    ============================================= */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    .section {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: var(--font-weight-heading);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-desc {
+      color: var(--color-text-secondary);
+      max-width: 640px;
+      margin-bottom: var(--space-xl);
+      font-size: 15px;
+    }
+
+    /* =============================================
+       HEADER / NAV
+    ============================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      backdrop-filter: blur(8px);
+      transition: background-color var(--transition);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-sm) var(--space-lg);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--color-primary);
+      transition: color var(--transition);
+    }
+
+    .logo-sub {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      display: block;
+      margin-top: -2px;
+    }
+
+    nav {
+      display: flex;
+      gap: var(--space-xs);
+      align-items: center;
+    }
+
+    nav a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--color-primary);
+      background: rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
+    }
+
+    /* VERSION TOGGLE */
+    .version-toggle {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+    }
+
+    .version-btn {
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--color-text-secondary);
+      transition: all var(--transition);
+    }
+
+    .version-btn.active {
+      background: var(--color-primary);
+      color: var(--color-bg);
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-lg);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      display: inline-block;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 8vw, 88px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-accent {
+      color: var(--color-accent);
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      max-width: 520px;
+      margin: 0 auto var(--space-xl);
+      line-height: 1.7;
+    }
+
+    .hero-version-badge {
+      display: inline-block;
+      background: var(--color-accent);
+      color: white;
+      padding: 8px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all var(--transition);
+    }
+
+    /* =============================================
+       SECCIÓN: CONCEPTO
+    ============================================= */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+
+    .concept-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: box-shadow var(--transition);
+    }
+
+    .concept-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .concept-card-icon {
+      font-size: 32px;
+      margin-bottom: var(--space-sm);
+      color: var(--color-bg);
+      background: var(--color-primary);
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-md);
+      transition: transform var(--transition);
+    }
+    
+    .concept-card:hover .concept-card-icon {
+      transform: translateY(-2px);
+    }
+
+    .concept-card h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .concept-card p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+
+    .manifesto-block {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl) var(--space-xl);
+      margin-top: var(--space-2xl);
+      position: relative;
+      overflow: hidden;
+      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 0;
+      text-align: center;
+    }
+    
+    .manifesto-block .manifesto-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .manifesto-block::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-family: var(--font-heading);
+      font-size: 200px;
+      opacity: 0.06;
+      line-height: 1;
+      color: var(--color-bg);
+    }
+
+    .manifesto-block blockquote {
+      font-family: var(--font-heading);
+      font-size: clamp(18px, 2.5vw, 26px);
+      line-height: 1.5;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .manifesto-block cite {
+      display: block;
+      margin-top: var(--space-md);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-style: normal;
+      opacity: 0.5;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .tension-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--space-md);
+      align-items: center;
+      margin-top: var(--space-lg);
+    }
+
+    .tension-pole {
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .tension-pole h4 {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .tension-pole ul {
+      list-style: none;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    .tension-pole ul li {
+      padding: 3px 0;
+    }
+
+    .tension-pole ul li::before {
+      content: "— ";
+    }
+
+    .tension-vs {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-accent);
+      text-align: center;
+    }
+
+    /* =============================================
+       SECCIÓN: PALETA DE COLORES
+    ============================================= */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .color-swatch {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .color-swatch:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .swatch-preview {
+      height: 100px;
+    }
+
+    .swatch-info {
+      padding: 12px;
+      background: var(--color-surface);
+    }
+
+    .swatch-name {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .swatch-hex {
+      font-size: 11px;
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      color: var(--color-text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .swatch-use {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+    }
+
+    .copied-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--color-primary);
+      color: var(--color-bg);
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 500;
+      transition: transform 300ms cubic-bezier(.34, 1.56, .64, 1);
+      z-index: 999;
+    }
+
+    .copied-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* =============================================
+       SECCIÓN: TIPOGRAFÍA
+    ============================================= */
+    .type-specimen {
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-xl);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .type-specimen:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .type-meta {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .type-meta-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+
+    .type-meta-detail {
+      font-size: 11px;
+      color: var(--color-border);
+      font-family: monospace;
+    }
+
+    .type-display {
+      font-family: var(--font-heading);
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+      letter-spacing: -0.02em;
+    }
+
+    .type-h1 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: var(--space-sm);
+    }
+
+    .type-h2 {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+    }
+
+    .type-h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: var(--space-sm);
+    }
+
+    .type-body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+    }
+
+    .type-small {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    .type-caption {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+
+    .type-scale-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: var(--space-sm);
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .type-scale-row:last-child {
+      border-bottom: none;
+    }
+
+    .type-px {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      font-family: monospace;
+    }
+
+    /* =============================================
+       SECCIÓN: LOGO
+    ============================================= */
+    .logo-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+
+    .logo-variant {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      min-height: 220px;
+    }
+
+    .logo-variant.dark {
+      background: var(--color-primary);
+    }
+
+    .logo-variant-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+
+    .logo-variant.dark .logo-variant-label {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* SVG Logo Placeholder */
+    .svg-logo {
+      transition: all var(--transition);
+    }
+
+    /* =============================================
+       SECCIÓN: COMPONENTES
+    ============================================= */
+    .components-grid {
+      display: grid;
+      gap: var(--space-xl);
+    }
+
+    .component-row {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* BOTONES */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      border: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      box-shadow: var(--shadow-accent);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary);
+      color: var(--color-bg);
+    }
+
+    .btn-ghost {
+      background: var(--color-bg-alt);
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--color-border);
+      color: var(--color-primary);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+
+    .btn-lg {
+      padding: 16px 32px;
+      font-size: 16px;
+    }
+
+    /* TARJETAS DE PRODUCTO */
+    .book-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .book-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+
+    .book-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+    
+    .book-card:hover .book-img img {
+      transform: scale(1.05);
+    }
+
+    .book-img {
+      aspect-ratio: 2/3;
+      background: var(--color-bg-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-img-inner {
+      width: 70%;
+      aspect-ratio: 2/3;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 8px;
+      font-style: italic;
+    }
+
+    .book-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--color-success);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .book-badge.out {
+      background: var(--color-text-secondary);
+    }
+
+    .book-info {
+      padding: 14px;
+    }
+
+    .book-title {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .book-author {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .book-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .book-price {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+
+    [data-version="b"] .book-price {
+      color: var(--color-accent-warm, var(--color-accent));
+    }
+
+    .book-btn {
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: var(--font-body);
+    }
+
+    .book-btn:hover {
+      background: var(--color-accent-hover);
+    }
+
+    /* BADGES */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .badge-used {
+      background: #FFF8F0;
+      color: #B25A00;
+      border: 1px solid #FDDCB0;
+    }
+
+    .badge-stock {
+      background: #F0FFF4;
+      color: var(--color-success);
+      border: 1px solid #BCECCA;
+    }
+
+    .badge-new {
+      background: #EEF2FF;
+      color: #3730B3;
+      border: 1px solid #C7D2FE;
+    }
+
+    .badge-rare {
+      background: #FFF0F0;
+      color: var(--color-accent);
+      border: 1px solid #FECACA;
+    }
+
+    .badge-out {
+      background: var(--color-bg-alt);
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+    }
+
+    /* INPUTS */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-primary);
+    }
+
+    .input {
+      padding: 10px 14px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--color-primary);
+      background: var(--color-surface);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+
+    .input:focus {
+      border-color: var(--color-accent);
+    }
+
+    .input::placeholder {
+      color: var(--color-border);
+    }
+
+    /* =============================================
+       SECCIÓN: CORREOS
+    ============================================= */
+    .email-preview {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      max-width: 560px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .email-header {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      padding: var(--space-lg);
+      text-align: center;
+    }
+
+    .email-header .logo-text {
+      color: var(--color-bg);
+      font-size: 20px;
+    }
+
+    .email-body {
+      background: var(--color-surface);
+      padding: var(--space-lg);
+    }
+
+    .email-body h2 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .email-body p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+      margin-bottom: var(--space-md);
+    }
+
+    .email-cta {
+      display: block;
+      text-align: center;
+      background: var(--color-accent);
+      color: white;
+      padding: 14px 24px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 15px;
+      transition: all var(--transition);
+    }
+
+    .email-footer {
+      background: var(--color-bg-alt);
+      padding: var(--space-md);
+      text-align: center;
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* =============================================
+       SECCIÓN: TONO DE VOZ
+    ============================================= */
+    .voice-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-lg);
+    }
+
+    .voice-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      padding: 10px 16px;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .voice-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .voice-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .voice-no {
+      color: var(--color-text-secondary);
+      text-decoration: line-through;
+      font-size: 13px;
+    }
+
+    .voice-yes {
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .spectrum-row {
+      display: grid;
+      grid-template-columns: 100px 1fr 100px;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .spectrum-label-left {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      text-align: right;
+    }
+
+    .spectrum-label-right {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+
+    .spectrum-bar {
+      height: 4px;
+      background: var(--color-border);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .spectrum-dot {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      border: 2px solid var(--color-bg);
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .site-footer {
+      padding: var(--space-xl) 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 768px) {
+
+      .concept-grid,
+      .logo-showcase,
+      .book-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .tension-row {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body data-version="a" id="root">
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-mark">
+        <!-- Logo JPG -->
+        <img src="C:/Users/Jordan Marles/.gemini/antigravity-ide/brain/f8e8aff0-781a-442e-9156-97061b5153cd/vendedor_colophon_premium_1790703576772.jpg" alt="Incunabula Logo" class="logo-icon" style="mix-blend-mode: multiply; border-radius: 4px; object-fit: cover;">
+        <div>
+          <span class="logo-text">INCUNABULA</span>
+          <span class="logo-sub">Sistema de Diseño</span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#concepto"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg> Concepto</a>
+        <a href="#colores"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg> Colores</a>
+        <a href="#tipografia"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg> Tipografía</a>
+        <a href="#componentes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg> Componentes</a>
+        <a href="#correos"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Correos</a>
+        <a href="#voz"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Voz</a>
+      </nav>
+
+      <div class="version-toggle">
+        <button class="version-btn active" onclick="setVersion('a', this)">A — Pergamino</button>
+        <button class="version-btn" onclick="setVersion('b', this)">B — Vanguardia</button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+  <div class="container">
+    <div class="hero" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-2xl); text-align: left; align-items: center;">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          Sistema de Diseño · v0 · 28 Sep 2026
+        </div>
+        <h1 class="hero-title" style="font-size: clamp(42px, 6vw, 72px); margin-bottom: var(--space-md); text-wrap: balance; line-height: 1.1;">
+          Tu próxima lectura <span class="hero-accent">te está esperando.</span>
+        </h1>
+        <p class="hero-desc" style="margin: 0 0 var(--space-xl) 0; max-width: 480px; font-size: 16px;">
+          Este sistema de diseño traduce la magia de una librería clásica al mundo digital. Hemos seleccionado cada detalle visual para evocar la textura del papel, el aroma a libro guardado y la emoción de encontrar esa edición exacta.
+        </p>
+        <div style="display: flex; gap: var(--space-sm); margin-bottom: var(--space-xl);">
+          <button class="btn btn-primary btn-lg hover-lift">Explorar Catálogo</button>
+          <button class="btn btn-secondary btn-lg hover-lift">Vender mis libros</button>
+        </div>
+        <span class="hero-version-badge hover-lift" id="version-badge" style="display: inline-block;">Versión A — Tinta y Pergamino</span>
+      </div>
+      <div style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; padding: 24px;">
+        <div style="position: relative; transform: translateY(32px);" class="hover-lift">
+           <img src="assets/photos/1000 años de alegrías y penas. Memorias.webp" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-card);" alt="Libro Destacado 1">
+           <div style="position: absolute; bottom: 16px; left: -20px; background: var(--color-surface); padding: 8px 12px; border-radius: var(--radius-sm); box-shadow: var(--shadow-hover); font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; z-index: 2;">
+             <span style="width: 8px; height: 8px; background: var(--color-success); border-radius: 50%;"></span> $25.000
+           </div>
+        </div>
+        <div style="position: relative; transform: translateY(-16px);" class="hover-lift">
+           <img src="assets/photos/Teatro completo.webp" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-hover);" alt="Libro Destacado 2">
+           <div style="position: absolute; top: -16px; right: -20px; background: var(--color-accent); color: white; padding: 8px 14px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 700; box-shadow: var(--shadow-accent); z-index: 2;">
+             -10% Descuento
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================= CONCEPTO ================= -->
+  <div class="container">
+    <section class="section" id="concepto">
+      <div class="section-label">01 — Fundación de Marca</div>
+      <h2 class="section-title">El Concepto</h2>
+      <p class="section-desc">
+        Todo sistema visual parte de una idea. La de Incunabula es una de las más ricas de la historia cultural: los
+        primeros libros impresos, la primera vez que el conocimiento fue accesible para todos.
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <div class="concept-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-icon"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <h3>La palabra fundacional</h3>
+          <p><em>Incunabulum</em> ("cuna" o "origen"). Así como Gutenberg democratizó el conocimiento impreso, nosotros democratizamos el acceso al libro físico, entregándolo a manos que desean leer.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-icon"><path d="M21 2v6h-6"></path><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v6h6"></path><path d="M21 12a9 9 0 1 0-9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path></svg>
+          </div>
+          <h3>El eterno retorno</h3>
+          <p>Un libro usado no es viejo, es un libro con experiencia. En Incunabula actuamos como esa segunda imprenta que le otorga una nueva vida dentro de una nueva biblioteca personal.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-icon"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3>La doble tensión</h3>
+          <p>La marca habita el equilibrio perfecto entre el peso cultural (el aura intocable de lo clásico) y el acceso universal, ofreciendo joyas editoriales con envíos rápidos y precios justos.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-icon"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <h3>El catálogo orgánico</h3>
+          <p>No somos una bodega estéril ni una élite. Ofrecemos el único catálogo en Colombia con miles de títulos curados minuciosamente, creciendo con el aporte de cada lector que se despide de un libro.</p>
+        </div>
+      </div>
+
+      <!-- Tensión de marca -->
+      <div class="tension-row">
+        <div class="tension-pole">
+          <h4>Polo cultural</h4>
+          <ul>
+            <li>El libro como objeto de valor</li>
+            <li>Lo clásico, lo que resiste el tiempo</li>
+            <li>La biblioteca como templo</li>
+            <li>La palabra "incunabula" (erudita)</li>
+          </ul>
+        </div>
+        <div class="tension-vs">↔</div>
+        <div class="tension-pole">
+          <h4>Polo accesible</h4>
+          <ul>
+            <li>Catálogo total: 21.735 libros procesados</li>
+            <li>Stock actual: 6.457 joyas listas para envío</li>
+            <li>La librería de todos</li>
+            <li>"No solo para gente de cultura"</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Manifesto -->
+      <div class="manifesto-block">
+        <div class="manifesto-inner">
+          <blockquote>
+            No vendemos simplemente libros usados. Rescatamos historias, curamos conocimiento y te lo entregamos listo para ser leído de nuevo.<br><br>
+            Porque el libro que acabas de leer, en lugar de acumular polvo, está destinado a desatar una nueva obsesión en otra persona. Somos el punto de encuentro entre una biblioteca que termina y otra que recién comienza.
+          </blockquote>
+          <cite>— Manifiesto Incunabula</cite>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ================= COLORES ================= -->
+  <div class="container">
+    <section class="section" id="colores">
+      <div class="section-label">02 — Paleta de Colores</div>
+      <h2 class="section-title">Los Colores</h2>
+      <p class="section-desc" id="color-desc">
+        <strong>Versión A — Tinta y Pergamino.</strong> El pergamino como fondo replica la experiencia física del libro.
+        La tinta casi-negra evoca la imprenta de tipos móviles. El carmesí es el color de las rúbricas en los primeros
+        incunables.
+      </p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 24px; margin-bottom: var(--space-sm);">Regla de Proporción UI (100%)</h3>
+      <div id="color-composition" style="display: flex; height: 160px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card); margin-bottom: var(--space-xl);">
+        <!-- Proportional bar injected via JS -->
+      </div>
+      
+      <h3 style="font-family: var(--font-heading); font-size: 18px; margin-bottom: var(--space-sm);">Tokens de Sistema Completos</h3>
+      <div class="color-grid" id="color-grid">
+        <!-- Colores insertados por JS -->
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ================= TIPOGRAFÍA ================= -->
+  <div class="container">
+    <section class="section" id="tipografia">
+      <div class="section-label">03 — Sistema Tipográfico</div>
+      <h2 class="section-title">Las Letras</h2>
+      <p class="section-desc" id="type-desc">
+        <strong>Playfair Display + Inter.</strong> Playfair proviene de la tradición tipográfica del siglo XVIII
+        (Caslon, Baskerville). Inter fue diseñada para pantallas de alta resolución. El par Serif/Sans crea jerarquía
+        sin fatiga visual.
+      </p>
+
+      <!-- Escala tipográfica -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-meta-name" id="heading-font-name">Tipografía Primaria — Playfair Display (Serif)</span>
+          <span class="type-meta-detail">Uso: Encabezados principales, títulos de libros, citas del manifiesto. Aporta el carácter editorial clásico.</span>
+        </div>
+
+        <div class="type-scale-row">
+          <span class="type-px">64px · Bold</span>
+          <div class="type-display">Incunabula</div>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-px">36px · Bold</span>
+          <div class="type-h1">Libros que siguen viviendo</div>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-px">28px · Bold</span>
+          <div class="type-h2">Cien años de soledad</div>
+        </div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-meta-name" id="body-font-name">Tipografía Secundaria — Inter (Sans-Serif)</span>
+          <span class="type-meta-detail">Uso: Párrafos, metadatos, botones, navegación. Garantiza legibilidad impecable en interfaces digitales.</span>
+        </div>
+
+        <div class="type-scale-row">
+          <span class="type-px">16px · Regular</span>
+          <div class="type-body">Un libro que ya vivió su primera historia y está listo para la segunda. Bien conservado — guardó perfectamente sus páginas durante años en una biblioteca bogotana antes de llegar a nosotros.</div>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-px">13px · Medium</span>
+          <div class="type-small">Usado · Español · 496 páginas · Estado: Bueno</div>
+        </div>
+        <div class="type-scale-row">
+          <span class="type-px">11px · SemiBold</span>
+          <div class="type-caption">Literatura · Colombia · Realismo mágico</div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+
+  <!-- ================= COMPONENTES ================= -->
+  <div class="container">
+    <section class="section" id="componentes">
+      <div class="section-label">04 — Biblioteca de Componentes</div>
+      <h2 class="section-title">Los Componentes</h2>
+      <p class="section-desc">Los ladrillos del sistema de diseño. Cada componente hereda los tokens de la versión
+        activa automáticamente.</p>
+
+      <div class="components-grid">
+
+        <!-- Botones -->
+        <div>
+          <p class="type-caption" style="margin-bottom: var(--space-sm);">Botones</p>
+          <div class="component-row">
+            <button class="btn btn-primary btn-lg">Añadir al carrito <span style="margin-left:8px;">→</span></button>
+            <button class="btn btn-primary">Comprar ahora</button>
+            <button class="btn btn-primary btn-sm">Ver detalles</button>
+          </div>
+          <div class="component-row" style="margin-top: var(--space-sm);">
+            <button class="btn btn-secondary btn-lg">Seguir explorando</button>
+            <button class="btn btn-secondary">Añadir a mi lista</button>
+            <button class="btn btn-secondary btn-sm" disabled style="opacity: 0.5; cursor: not-allowed;">Agotado</button>
+          </div>
+          <div class="component-row" style="margin-top: var(--space-sm);">
+            <button class="btn btn-ghost" style="border-color: var(--color-border);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feather-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Continuar con Google</button>
+            <button class="btn btn-ghost" style="color: var(--color-accent); border-color: var(--color-accent);">Eliminar del carrito</button>
+            <button class="btn" style="background: transparent; color: var(--color-text-secondary); text-decoration: underline; padding: 12px; font-weight: 500;">Solo texto tipo enlace</button>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div>
+          <p class="type-caption" style="margin-bottom: var(--space-sm);">Etiquetas de catálogo</p>
+          <div class="component-row">
+            <span class="badge badge-used"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feather-icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> Usado Premium</span>
+            <span class="badge badge-stock">En stock (1)</span>
+            <span class="badge badge-new">Nuevo sellado</span>
+            <span class="badge badge-rare">★ Primera Edición</span>
+            <span class="badge badge-out">Agotado temporalmente</span>
+          </div>
+        </div>
+
+        <!-- Tarjetas de producto -->
+        <div>
+          <p class="type-caption" style="margin-bottom: var(--space-sm);">Tarjetas de producto (Inventario Real)</p>
+          <div class="book-cards">
+            
+            <!-- Card 1 -->
+            <div class="book-card" style="display: flex; flex-direction: column; height: 100%;">
+              <div class="book-img" style="background: var(--color-bg-alt); aspect-ratio: 1/1.2; overflow: hidden; position: relative;">
+                <span class="badge badge-rare book-badge" style="z-index: 2; background: var(--color-accent); color: white; border: none;">-20%</span>
+                <img src="assets/photos/100 historias de oración para niñas valientes.webp" alt="100 historias de oración" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+              </div>
+              <div class="book-info" style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div class="book-title" style="font-size: 16px; margin-bottom: 6px;">100 historias de oración para niñas valientes</div>
+                  <div class="book-author" style="font-size: 13px; margin-bottom: 8px; color: var(--color-text-secondary);">Jean Fischer</div>
+                  <div style="font-size: 11px; color: var(--color-success); font-weight: 500; margin-bottom: 12px;">En stock</div>
+                </div>
+                <div class="book-footer" style="margin-top: auto; border-top: 1px solid var(--color-border); padding-top: 16px; flex-wrap: wrap; gap: 8px; align-items: flex-end;">
+                  <div style="display: flex; flex-direction: column; line-height: 1;">
+                    <span style="font-size: 11px; text-decoration: line-through; color: var(--color-text-secondary); margin-bottom: 4px;">$25.000</span>
+                    <span class="book-price" style="font-size: 18px;">$20.000</span>
+                  </div>
+                  <button class="book-btn" style="padding: 8px 16px; font-size: 13px;">Añadir</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="book-card" style="display: flex; flex-direction: column; height: 100%;">
+              <div class="book-img" style="background: var(--color-bg-alt); aspect-ratio: 1/1.2; overflow: hidden; position: relative;">
+                <span class="badge badge-rare book-badge" style="z-index: 2; background: var(--color-accent); color: white; border: none;">-30%</span>
+                <img src="assets/photos/1000 años de alegrías y penas. Memorias.webp" alt="1000 años de alegrías y penas" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+              </div>
+              <div class="book-info" style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div class="book-title" style="font-size: 16px; margin-bottom: 6px;">1000 años de alegrías y penas. Memorias</div>
+                  <div class="book-author" style="font-size: 13px; margin-bottom: 8px; color: var(--color-text-secondary);">Juanita León</div>
+                  <div style="font-size: 11px; color: #B25A00; font-weight: 500; margin-bottom: 12px;">Usado, muy bueno</div>
+                </div>
+                <div class="book-footer" style="margin-top: auto; border-top: 1px solid var(--color-border); padding-top: 16px; flex-wrap: wrap; gap: 8px; align-items: flex-end;">
+                  <div style="display: flex; flex-direction: column; line-height: 1;">
+                    <span style="font-size: 11px; text-decoration: line-through; color: var(--color-text-secondary); margin-bottom: 4px;">$35.700</span>
+                    <span class="book-price" style="font-size: 18px;">$25.000</span>
+                  </div>
+                  <button class="book-btn" style="padding: 8px 16px; font-size: 13px;">Añadir</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="book-card" style="display: flex; flex-direction: column; height: 100%;">
+              <div class="book-img" style="background: var(--color-bg-alt); aspect-ratio: 1/1.2; overflow: hidden; position: relative;">
+                <span class="badge badge-rare book-badge" style="z-index: 2; background: var(--color-accent); color: white; border: none;">-10%</span>
+                <img src="assets/photos/Teatro completo.webp" alt="Teatro completo" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+              </div>
+              <div class="book-info" style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div class="book-title" style="font-size: 16px; margin-bottom: 6px;">Teatro completo</div>
+                  <div class="book-author" style="font-size: 13px; margin-bottom: 8px; color: var(--color-text-secondary);">Luis Andrés Caicedo</div>
+                  <div style="font-size: 11px; color: #3730B3; font-weight: 500; margin-bottom: 12px;">Nuevo</div>
+                </div>
+                <div class="book-footer" style="margin-top: auto; border-top: 1px solid var(--color-border); padding-top: 16px; flex-wrap: wrap; gap: 8px; align-items: flex-end;">
+                  <div style="display: flex; flex-direction: column; line-height: 1;">
+                    <span style="font-size: 11px; text-decoration: line-through; color: var(--color-text-secondary); margin-bottom: 4px;">$43.300</span>
+                    <span class="book-price" style="font-size: 18px;">$39.000</span>
+                  </div>
+                  <button class="book-btn" style="padding: 8px 16px; font-size: 13px;">Añadir</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="book-card" style="display: flex; flex-direction: column; height: 100%;">
+              <div class="book-img" style="background: var(--color-bg-alt); aspect-ratio: 1/1.2; overflow: hidden; position: relative;">
+                <span class="badge badge-rare book-badge" style="z-index: 2; background: var(--color-accent); color: white; border: none;">-10%</span>
+                <img src="assets/photos/Book Nook Bookshop Memories. Rincón de libros para armar y decorar tu biblioteca..webp" alt="Book Nook" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+              </div>
+              <div class="book-info" style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div class="book-title" style="font-size: 16px; margin-bottom: 6px;">Book Nook Bookshop Memories</div>
+                  <div class="book-author" style="font-size: 13px; margin-bottom: 8px; color: var(--color-text-secondary);">Sin autor</div>
+                  <div style="font-size: 11px; color: #3730B3; font-weight: 500; margin-bottom: 12px;">Nuevo</div>
+                </div>
+                <div class="book-footer" style="margin-top: auto; border-top: 1px solid var(--color-border); padding-top: 16px; flex-wrap: wrap; gap: 8px; align-items: flex-end;">
+                  <div style="display: flex; flex-direction: column; line-height: 1;">
+                    <span style="font-size: 11px; text-decoration: line-through; color: var(--color-text-secondary); margin-bottom: 4px;">$210.000</span>
+                    <span class="book-price" style="font-size: 18px;">$189.000</span>
+                  </div>
+                  <button class="book-btn" style="padding: 8px 16px; font-size: 13px;">Añadir</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Inputs -->
+        <div>
+          <p class="type-caption" style="margin-bottom: var(--space-sm);">Formularios de Checkout y Búsqueda</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); align-items: start;">
+            <!-- Buscador y Filtros -->
+            <div style="background: var(--color-surface); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--color-border); box-shadow: var(--shadow-card);">
+              <h4 style="font-family: var(--font-heading); margin-bottom: 16px;">Búsqueda Avanzada</h4>
+              <div class="input-group" style="position: relative; margin-bottom: 16px;">
+                <input class="input" type="text" placeholder="Buscar por título, autor, ISBN..." style="width: 100%; padding-left: 40px; height: 44px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); outline: none;">
+                <svg style="position: absolute; left: 12px; top: 12px; color: var(--color-text-secondary);" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                <select class="input" style="width: 100%; height: 40px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); color: var(--color-text-secondary); padding-left: 12px; outline: none;">
+                  <option>Todas las categorías</option>
+                  <option>Literatura y Novela</option>
+                  <option>Historia y Política</option>
+                </select>
+                <select class="input" style="width: 100%; height: 40px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); color: var(--color-text-secondary); padding-left: 12px; outline: none;">
+                  <option>Estado: Todos</option>
+                  <option>Como nuevo</option>
+                  <option>Con historia</option>
+                </select>
+              </div>
+              <button class="btn btn-primary" style="width: 100%; justify-content: center;">Buscar tesoros</button>
+            </div>
+            
+            <!-- Checkout Form Mock -->
+            <div style="background: var(--color-surface); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-family: var(--font-heading); margin-bottom: 16px;">Datos de Envío</h4>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--color-text-secondary);">Nombre</label>
+                  <input class="input" type="text" placeholder="Ej. Gabriel" style="width: 100%; height: 40px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 0 12px; font-family: var(--font-body); outline: none;">
+                </div>
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--color-text-secondary);">Apellidos</label>
+                  <input class="input" type="text" placeholder="Ej. García" style="width: 100%; height: 40px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 0 12px; font-family: var(--font-body); outline: none;">
+                </div>
+              </div>
+              <div style="margin-bottom: 16px;">
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--color-text-secondary);">Dirección completa</label>
+                <input class="input" type="text" placeholder="Calle, Carrera, Apto..." style="width: 100%; height: 40px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 0 12px; font-family: var(--font-body); outline: none;">
+              </div>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-text-secondary); margin-bottom: 20px; cursor: pointer;">
+                <input type="checkbox" checked style="accent-color: var(--color-accent); width: 16px; height: 16px;">
+                Guardar esta dirección para mis próximas compras
+              </label>
+              <button class="btn btn-primary" style="width: 100%; justify-content: center;">Continuar al pago</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ================= LOGO ================= -->
+  <div class="container">
+    <section class="section" id="logo">
+      <div class="section-label">05 — Logotipo</div>
+      <h2 class="section-title">El Logo</h2>
+      <p class="section-desc">
+        El vendedor ambulante de libros del Renacimiento. Figura histórica que conecta el concepto de los incunables con
+        el acto de hacer circular el conocimiento. El logo en proceso de vectorización SVG.
+      </p>
+
+      <div class="logo-showcase" style="grid-template-columns: 1fr;">
+        <div class="logo-variant" style="flex-direction: row; align-items: stretch; justify-content: flex-start; gap: 0; overflow: hidden; padding: 0;">
+          <div style="flex: 1; background: var(--color-bg-alt); display: flex; align-items: center; justify-content: center; padding: var(--space-2xl);">
+            <img src="C:/Users/Jordan Marles/.gemini/antigravity-ide/brain/f8e8aff0-781a-442e-9156-97061b5153cd/vendedor_colophon_premium_1790703576772.jpg" alt="Logo de Incunabula (JPG)" style="max-width: 250px; mix-blend-mode: multiply;">
+          </div>
+          <div style="flex: 1; padding: var(--space-2xl); display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="font-family: var(--font-heading); font-size: 24px; margin-bottom: 8px;">Logotipo Oficial (Colophon)</h3>
+            <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: 16px; line-height: 1.7;">La identidad principal actual se basa en la imagen clásica del vendedor ambulante de libros, simbolizando la distribución democrática y cercana del conocimiento. Se debe utilizar con un <code>mix-blend-mode: multiply;</code> sobre fondos claros para integrar el papel antiguo con la interfaz moderna.</p>
+            <div style="display: flex; gap: 16px;">
+              <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-secondary);">
+                <strong>Estado:</strong> JPG activo<br>
+                Vectorización SVG (Pendiente)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ================= CORREOS ================= -->
+  <div class="container">
+    <section class="section" id="correos">
+      <div class="section-label">06 — Correos Transaccionales</div>
+      <h2 class="section-title">Voz en los Correos</h2>
+      <p class="section-desc">Preview del correo de recuperación de carrito (Correo 3). El texto aplica el tono de
+        marca: cercano, sin urgencia manufacturada, con el cupón como gesto de confianza.</p>
+
+      <div class="email-preview">
+        <div class="email-header">
+          <div class="logo-text" style="font-family: var(--font-heading); font-size: 18px; letter-spacing: 0.06em;">
+            INCUNABULA</div>
+        </div>
+        <div class="email-body">
+          <p style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: var(--space-sm);">Hola
+            <strong>María</strong>,
+          </p>
+          <h2>Dejaste algunos libros esperándote.</h2>
+          <p>
+            Hace unos días encontraste títulos que valían la pena. Todavía están ahí, guardados para ti, listos para empezar su segunda historia en tu biblioteca.
+          </p>
+          
+          <!-- Cart Summary (Dynamic WooCommerce Mock) -->
+          <div style="background: var(--color-bg-alt); border-radius: var(--radius-md); padding: 16px; margin: 24px 0; display: flex; gap: 16px; align-items: center; border: 1px solid var(--color-border);">
+            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=200&auto=format&fit=crop" alt="Libro abandonado" style="width: 60px; height: 80px; object-fit: cover; border-radius: 4px; box-shadow: var(--shadow-card);">
+            <div style="flex-grow: 1;">
+              <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--color-primary);">Cien años de soledad</div>
+              <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 4px;">Gabriel García Márquez</div>
+              <div style="font-weight: 600; color: var(--color-accent); font-size: 14px;">$35.000 COP</div>
+            </div>
+          </div>
+
+          <p>
+            Para animarte a dar el paso final, preparamos un cupón exclusivo del <strong
+              style="color: var(--color-accent);">10% de descuento</strong> solo para ti:
+          </p>
+          <div style="background: var(--color-bg-alt); border: 2px dashed var(--color-accent); border-radius: var(--radius-lg); padding: 24px; text-align: center; margin-bottom: var(--space-md); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -15px; left: -15px; background: var(--color-accent); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; font-weight: bold; font-size: 14px; transform: rotate(-15deg);">10%</div>
+            <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; letter-spacing: 0.15em; color: var(--color-primary); margin-bottom: 8px;">LIBROS10</div>
+            <div style="font-size: 13px; color: var(--color-text-secondary); font-weight: 500;">Válido por 24 horas · Aplica en el Checkout</div>
+            <button class="btn btn-primary" style="margin-top: 16px; width: 100%; justify-content: center;">Aplicar descuento al carrito</button>
+          </div>
+          <a href="#" class="email-cta">Recuperar mi carrito →</a>
+        </div>
+        <div class="email-footer">
+          Si tuviste algún problema técnico, responde a este correo. <br>
+          <a href="#" style="color: var(--color-text-secondary);">Cancelar suscripción</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ================= TOZ DE VOZ ================= -->
+  <div class="container">
+    <section class="section" id="voz">
+      <div class="section-label">07 — Tono de Voz</div>
+      <h2 class="section-title">El Lenguaje</h2>
+      <p class="section-desc">Cómo suena Incunabula en cada punto de contacto. El lenguaje es parte del sistema de
+        diseño — define la personalidad de la marca tanto como el color.</p>
+
+      <!-- Espectros Interactivos -->
+      <div style="margin-bottom: var(--space-xl); display: grid; gap: 24px; max-width: 600px;">
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; color: var(--color-primary);">
+            <span>Formal / Institucional</span>
+            <span>Cercano / Apasionado</span>
+          </div>
+          <input type="range" min="1" max="5" value="4" class="voice-slider" id="voice-slider" style="width: 100%; accent-color: var(--color-accent); cursor: pointer;">
+          <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: var(--color-text-secondary); font-weight: 600;">
+            <span>Nivel 1</span><span>Nivel 2</span><span>Nivel 3</span><span>Nivel 4</span><span>Nivel 5</span>
+          </div>
+        </div>
+      </div>
+      
+      <div style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 32px; border-radius: var(--radius-lg); position: relative; box-shadow: var(--shadow-card);">
+        <span class="badge badge-new" style="position: absolute; top: -10px; left: 24px; background: var(--color-primary); border-color: var(--color-primary); color: var(--color-bg);">Prueba interactiva</span>
+        <h4 style="font-family: var(--font-heading); margin-bottom: 16px; font-size: 20px;">Email: Respuesta a queja por demora logística</h4>
+        <p id="voice-preview" style="font-size: 16px; line-height: 1.7; color: var(--color-text-secondary);">
+          Hola María. Entendemos que estás esperando tu libro. Ha habido un leve retraso en la transportadora, pero ya estamos encima del caso para que te llegue muy pronto a casa. ¡Gracias por tu paciencia!
+        </p>
+      </div>
+
+      <!-- Tabla de vocabulario -->
+      <table class="voice-table">
+        <thead>
+          <tr>
+            <th>Contexto</th>
+            <th>❌ No decimos</th>
+            <th>✅ Sí decimos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Estado del libro</strong></td>
+            <td><span class="voice-no">Buenas condiciones</span></td>
+            <td><span class="voice-yes">Bien conservado — guardó bien sus páginas</span></td>
+          </tr>
+          <tr>
+            <td><strong>Precio</strong></td>
+            <td><span class="voice-no">Barato / Económico / Rebajado</span></td>
+            <td><span class="voice-yes">Precio justo / Accesible / Hallazgo</span></td>
+          </tr>
+          <tr>
+            <td><strong>Urgencia</strong></td>
+            <td><span class="voice-no">¡Corre que se acaba!</span></td>
+            <td><span class="voice-yes">Todavía está disponible para ti</span></td>
+          </tr>
+          <tr>
+            <td><strong>Carrito abandonado</strong></td>
+            <td><span class="voice-no">Olvidaste tu carrito</span></td>
+            <td><span class="voice-yes">Dejaste algunos libros esperándote</span></td>
+          </tr>
+          <tr>
+            <td><strong>Libro usado</strong></td>
+            <td><span class="voice-no">Usado / De segunda</span></td>
+            <td><span class="voice-yes">Ya vivió su primera historia</span></td>
+          </tr>
+          <tr>
+            <td><strong>Libro con marcas</strong></td>
+            <td><span class="voice-no">Con marcas / Deteriorado</span></td>
+            <td><span class="voice-yes">Con historia — tiene notas del lector anterior</span></td>
+          </tr>
+          <tr>
+            <td><strong>Post-compra</strong></td>
+            <td><span class="voice-no">¡Gracias por tu compra!</span></td>
+            <td><span class="voice-yes">Tu pedido está en camino. Pronto tendrás un libro con una nueva historia por
+                vivir.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer" style="background: var(--color-primary); color: var(--color-bg); margin-top: var(--space-2xl); padding: var(--space-2xl) 0; border: none;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-xl); align-items: center;">
+      <div style="text-align: left;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <img src="C:/Users/Jordan Marles/.gemini/antigravity-ide/brain/f8e8aff0-781a-442e-9156-97061b5153cd/vendedor_colophon_premium_1790703576772.jpg" alt="Incunabula Logo" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px; filter: grayscale(1) invert(1) contrast(2);">
+          <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700;">INCUNABULA</div>
+        </div>
+        <p style="opacity: 0.7; font-size: 14px; max-width: 320px; margin-bottom: 24px; line-height: 1.7;">La librería donde los buenos libros nunca mueren. Hacemos circular el conocimiento desde Colombia para todo el mundo.</p>
+        <div style="display: flex; gap: 16px;">
+          <a href="#" style="color: var(--color-bg); opacity: 0.5; transition: opacity 0.2s;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="#" style="color: var(--color-bg); opacity: 0.5; transition: opacity 0.2s;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <h4 style="font-size: 14px; margin-bottom: 16px; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-body);">Sistema de Diseño</h4>
+        <p style="font-size: 12px; opacity: 0.5; line-height: 1.8;">v0.1.0 — Actualizado Sep 2026<br>Diseñado para Elementor Pro & WooCommerce<br>© Incunabula Libros</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="copied-toast" id="toast">Color copiado al portapapeles ✓</div>
+
+
+  <!-- =============================================
+       JAVASCRIPT
+  ============================================= -->
+  <script>
+    // JS para interacción de Tono de Voz
+    const voiceSlider = document.getElementById('voice-slider');
+    const voicePreview = document.getElementById('voice-preview');
+    
+    const voiceTexts = {
+      "1": "Estimado/a cliente. Le informamos que su pedido ha presentado una demora logística fuera de nuestro control. Estamos realizando el seguimiento correspondiente con la transportadora. Agradecemos su comprensión.",
+      "2": "Hola. Hemos notado un retraso en el envío de su pedido por parte de la empresa de transporte. Nuestro equipo está monitoreando la situación para asegurar la entrega lo antes posible.",
+      "3": "Hola María. Tu libro viene en camino, pero la transportadora ha tenido un pequeño retraso. Estamos pendientes de tu paquete para asegurarnos de que llegue bien. Gracias por esperar.",
+      "4": "Hola María. Entendemos que estás esperando tu libro. Ha habido un leve retraso en la transportadora, pero ya estamos encima del caso para que te llegue muy pronto a casa. ¡Gracias por tu paciencia!",
+      "5": "¡Hola María! Sabemos las ganas que tienes de empezar a leer. Tu paquete está atrapado en un pequeño trancón de la transportadora, pero ya estamos moviendo cielo y tierra para que lo tengas en tus manos. ¡Mil gracias por esperarnos!"
+    };
+
+    if(voiceSlider && voicePreview) {
+      voiceSlider.addEventListener('input', (e) => {
+        voicePreview.textContent = voiceTexts[e.target.value];
+      });
+    }
+
+    const VERSIONS = {
+      a: {
+        name: "Versión A — Tinta y Pergamino",
+        colorDesc: "<strong>Versión A — Tinta y Pergamino.</strong> El pergamino como fondo replica la experiencia física del libro. La tinta casi-negra evoca la imprenta de tipos móviles. El carmesí es el color de las rúbricas en los primeros incunables.",
+        typeDesc: "<strong>Playfair Display + Inter.</strong> Playfair proviene de la tradición tipográfica del siglo XVIII (Caslon, Baskerville). Inter fue diseñada para pantallas de alta resolución. El par Serif/Sans crea jerarquía sin fatiga visual.",
+        headingFontName: "Playfair Display — Headings",
+        composition: [
+          { name: "Pergamino", percent: 60, hex: "#F5F3EE", text: "#111111", use: "Fondo general del sitio" },
+          { name: "Blanco", percent: 25, hex: "#FFFFFF", text: "#111111", use: "Superficies y Cards" },
+          { name: "Tinta", percent: 10, hex: "#111111", text: "#F5F3EE", use: "Textos y Estructura" },
+          { name: "Carmesí", percent: 5, hex: "#B22222", text: "#FFFFFF", use: "Acentos y CTAs" }
+        ],
+        colors: [
+          { name: "Tinta", hex: "#111111", use: "Textos principales · Logo · Headers" },
+          { name: "Pergamino", hex: "#F5F3EE", use: "Fondo general del sitio" },
+          { name: "Alt. Fondo", hex: "#ECEAE4", use: "Fondo de secciones alternas" },
+          { name: "Carmesí", hex: "#B22222", use: "CTAs · Badges · Links activos" },
+          { name: "Carmesí Dark", hex: "#8B1A1A", use: "Hover de botón primario" },
+          { name: "Grafito", hex: "#3D3D3D", use: "Subtítulos · Texto secundario" },
+          { name: "Hueso", hex: "#D8D8D4", use: "Bordes · Separadores" },
+          { name: "Blanco", hex: "#FFFFFF", use: "Superficies · Cards" },
+          { name: "Musgo", hex: "#3A6B35", use: "En stock · Confirmado" },
+        ]
+      },
+      b: {
+        name: "Versión B — Vanguardia & Neón",
+        colorDesc: "<strong>Versión B — Brutalismo Moderno (Regla 65-25-10).</strong> Una regla estricta donde el 65% es dominante (Piedra Pómez), el 25% estructura y texto grueso (Negro Puro), y un 10% se reserva puramente para acentos llamativos (Naranja Sutil).",
+        typeDesc: "<strong>Bricolage Grotesque + Space Grotesk.</strong> Tipografías de vanguardia. Bricolage Grotesque aporta un carácter rudo y moderno, pero con proporciones más condensadas que Syne, solucionando el problema de legibilidad en palabras largas como INCUNABULA. Space Grotesk mantiene el tono tech-digital.",
+        headingFontName: "Bricolage Grotesque — Headings",
+        composition: [
+          { name: "Piedra Pómez", percent: 65, hex: "#F0ECE6", text: "#111111", use: "Fondo dominante" },
+          { name: "Negro Puro", percent: 25, hex: "#111111", text: "#F0ECE6", use: "Textos y Estructura" },
+          { name: "Naranja Sutil", percent: 10, hex: "#E35D29", text: "#FFFFFF", use: "Disruptivo (Acentos)" }
+        ],
+        colors: [
+          { name: "Negro Puro", hex: "#111111", use: "Contraste 20% · Textos · Headers" },
+          { name: "Piedra Pómez", hex: "#F0ECE6", use: "Dominante 70% · Fondo general" },
+          { name: "Cemento", hex: "#E3DFD9", use: "Fondo de secciones alternas" },
+          { name: "Naranja Sutil", hex: "#E35D29", use: "Disruptivo 10% · CTAs · Links" },
+          { name: "Naranja Oscuro", hex: "#D05220", use: "Hover de botón primario" },
+          { name: "Ámbar", hex: "#FF7A00", use: "Precios · Ornamentos" },
+          { name: "Gris Ceniza", hex: "#555555", use: "Subtítulos · Texto secundario" },
+          { name: "Aluminio", hex: "#CFCBC5", use: "Bordes · Separadores" },
+          { name: "Blanco", hex: "#FFFFFF", use: "Superficies · Cards" },
+        ]
+      }
+    };
+
+    function setVersion(v, btn) {
+      document.getElementById('root').setAttribute('data-version', v);
+      document.querySelectorAll('.version-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const data = VERSIONS[v];
+      document.getElementById('version-badge').textContent = data.name;
+      document.getElementById('color-desc').innerHTML = data.colorDesc;
+      document.getElementById('type-desc').innerHTML = data.typeDesc;
+      document.getElementById('heading-font-name').textContent = data.headingFontName;
+      renderColors(data);
+    }
+
+    function renderColors(data) {
+      const comp = document.getElementById('color-composition');
+      comp.innerHTML = data.composition.map(c => `
+        <div style="width: ${c.percent}%; background: ${c.hex}; color: ${c.text}; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border-right: 1px solid rgba(0,0,0,0.05); overflow: hidden;" title="${c.name}: ${c.percent}%" onclick="copyHex('${c.hex}', this)">
+          <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; line-height: 1; margin-bottom: 4px;">${c.percent}%</div>
+          <div style="font-weight: 700; font-size: 14px; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${c.name}</div>
+          <div style="font-size: 11px; opacity: 0.8; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${c.use}</div>
+        </div>
+      `).join('');
+
+      const grid = document.getElementById('color-grid');
+      grid.innerHTML = data.colors.map(c => `
+        <div class="color-swatch" onclick="copyHex('${c.hex}', this)" title="Clic para copiar">
+          <div class="swatch-preview" style="background:${c.hex};"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">${c.name}</div>
+            <div class="swatch-hex">${c.hex}</div>
+            <div class="swatch-use">${c.use}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function copyHex(hex, el) {
+      navigator.clipboard.writeText(hex).then(() => {
+        const toast = document.getElementById('toast');
+        toast.textContent = `${hex} copiado al portapapeles ✓`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      });
+    }
+
+    // Init
+    renderColors(VERSIONS.a);
+  </script>
+</body>
+
+</html>
