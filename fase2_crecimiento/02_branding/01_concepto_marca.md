@@ -13,9 +13,9 @@ Pero más allá de la definición técnica, lo que ocurrió con los incunables e
 
 > **Antes de la imprenta**, el conocimiento vivía encerrado en monasterios y cortes. Un libro era un objeto de poder. Copiar un texto a mano tomaba meses y solo los ricos podían tenerlos. La cultura era literalmente inaccesible para la mayoría.
 > 
-> **Después de la imprenta**, un libro podía reproducirse en cientos de copias. El precio cayó. El conocimiento salió de los monasterios y llegó a los mercaderes, los estudiantes, las ciudades. Por primera vez en la historia, cualquier persona alfabetizada podía acceder a las ideas más importantes de su tiempo.
+> **Con la imprenta de tipos móviles en Europa occidental**, un libro podía reproducirse en cientos de copias. El precio cayó. El conocimiento salió de los monasterios y llegó a los mercaderes, los estudiantes, las ciudades. Para la marca, ese momento representa el inicio de una nueva circulación masiva del saber: la idea de que las ideas pueden llegar a más manos.
 
-Los incunables son, literalmente, el **primer intento de la humanidad de democratizar el conocimiento a través del libro**.
+Los incunables representan, para la marca, **el inicio de una nueva circulación masiva del saber en Europa occidental a través del libro impreso**.
 
 ---
 
