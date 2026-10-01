@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async rewrites() {
+    return [
+      {
+        source: "/sistema-visual",
+        destination: "/sistema-visual/index.html",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
